@@ -41,6 +41,7 @@
     UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, tabBar.frame.size.height, width, height-tabBar.frame.size.height)];
     [self.view addSubview:contentView];
     _contentView = contentView;
+    
 }
 
 

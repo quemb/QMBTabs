@@ -1,0 +1,518 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E24EDB4C177F09EC00673520 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E24EDB4B177F09EC00673520 /* UIKit.framework */; };
+		E24EDB4E177F09EC00673520 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E24EDB4D177F09EC00673520 /* Foundation.framework */; };
+		E24EDB50177F09EC00673520 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E24EDB4F177F09EC00673520 /* CoreGraphics.framework */; };
+		E24EDB56177F09EC00673520 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E24EDB54177F09EC00673520 /* InfoPlist.strings */; };
+		E24EDB58177F09EC00673520 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E24EDB57177F09EC00673520 /* main.m */; };
+		E24EDB5C177F09EC00673520 /* QMBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E24EDB5B177F09EC00673520 /* QMBAppDelegate.m */; };
+		E24EDB5E177F09EC00673520 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E24EDB5D177F09EC00673520 /* Default.png */; };
+		E24EDB60177F09EC00673520 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E24EDB5F177F09EC00673520 /* Default@2x.png */; };
+		E24EDB62177F09EC00673520 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E24EDB61177F09EC00673520 /* Default-568h@2x.png */; };
+		E24EDB65177F09EC00673520 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E24EDB63177F09EC00673520 /* MainStoryboard_iPhone.storyboard */; };
+		E24EDB68177F09EC00673520 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E24EDB66177F09EC00673520 /* MainStoryboard_iPad.storyboard */; };
+		E24EDB7E177F09EC00673520 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E24EDB7D177F09EC00673520 /* SenTestingKit.framework */; };
+		E24EDB7F177F09EC00673520 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E24EDB4B177F09EC00673520 /* UIKit.framework */; };
+		E24EDB80177F09EC00673520 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E24EDB4D177F09EC00673520 /* Foundation.framework */; };
+		E24EDB88177F09EC00673520 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E24EDB86177F09EC00673520 /* InfoPlist.strings */; };
+		E24EDB8B177F09EC00673520 /* QMBTabs_DemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E24EDB8A177F09EC00673520 /* QMBTabs_DemoTests.m */; };
+		E24EDB97177F0AAB00673520 /* QMBTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E24EDB96177F0AAB00673520 /* QMBTabViewController.m */; };
+		E24EDB9A177F0D4400673520 /* QMBTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E24EDB99177F0D4400673520 /* QMBTabBar.m */; };
+		E24EDB9D177F192400673520 /* QMBTab.m in Sources */ = {isa = PBXBuildFile; fileRef = E24EDB9C177F192400673520 /* QMBTab.m */; };
+		E24EDB9F177F193400673520 /* QMBTab.xib in Resources */ = {isa = PBXBuildFile; fileRef = E24EDB9E177F193400673520 /* QMBTab.xib */; };
+		E24EDBA21780CF7600673520 /* SampleTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E24EDBA11780CF7600673520 /* SampleTabViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E24EDB81177F09EC00673520 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E24EDB40177F09EC00673520 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E24EDB47177F09EC00673520;
+			remoteInfo = "QMBTabs Demo";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E24EDB48177F09EC00673520 /* QMBTabs Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "QMBTabs Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E24EDB4B177F09EC00673520 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		E24EDB4D177F09EC00673520 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E24EDB4F177F09EC00673520 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E24EDB53177F09EC00673520 /* QMBTabs Demo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "QMBTabs Demo-Info.plist"; sourceTree = "<group>"; };
+		E24EDB55177F09EC00673520 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E24EDB57177F09EC00673520 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E24EDB59177F09EC00673520 /* QMBTabs Demo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QMBTabs Demo-Prefix.pch"; sourceTree = "<group>"; };
+		E24EDB5A177F09EC00673520 /* QMBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QMBAppDelegate.h; sourceTree = "<group>"; };
+		E24EDB5B177F09EC00673520 /* QMBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QMBAppDelegate.m; sourceTree = "<group>"; };
+		E24EDB5D177F09EC00673520 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		E24EDB5F177F09EC00673520 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		E24EDB61177F09EC00673520 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		E24EDB64177F09EC00673520 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		E24EDB67177F09EC00673520 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		E24EDB7C177F09EC00673520 /* QMBTabs DemoTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "QMBTabs DemoTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E24EDB7D177F09EC00673520 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		E24EDB85177F09EC00673520 /* QMBTabs DemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "QMBTabs DemoTests-Info.plist"; sourceTree = "<group>"; };
+		E24EDB87177F09EC00673520 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E24EDB89177F09EC00673520 /* QMBTabs_DemoTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QMBTabs_DemoTests.h; sourceTree = "<group>"; };
+		E24EDB8A177F09EC00673520 /* QMBTabs_DemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QMBTabs_DemoTests.m; sourceTree = "<group>"; };
+		E24EDB95177F0AAB00673520 /* QMBTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMBTabViewController.h; sourceTree = "<group>"; };
+		E24EDB96177F0AAB00673520 /* QMBTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMBTabViewController.m; sourceTree = "<group>"; };
+		E24EDB98177F0D4400673520 /* QMBTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMBTabBar.h; sourceTree = "<group>"; };
+		E24EDB99177F0D4400673520 /* QMBTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMBTabBar.m; sourceTree = "<group>"; };
+		E24EDB9B177F192400673520 /* QMBTab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMBTab.h; sourceTree = "<group>"; };
+		E24EDB9C177F192400673520 /* QMBTab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMBTab.m; sourceTree = "<group>"; };
+		E24EDB9E177F193400673520 /* QMBTab.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QMBTab.xib; sourceTree = "<group>"; };
+		E24EDBA01780CF7600673520 /* SampleTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleTabViewController.h; sourceTree = "<group>"; };
+		E24EDBA11780CF7600673520 /* SampleTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleTabViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E24EDB45177F09EC00673520 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E24EDB4C177F09EC00673520 /* UIKit.framework in Frameworks */,
+				E24EDB4E177F09EC00673520 /* Foundation.framework in Frameworks */,
+				E24EDB50177F09EC00673520 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E24EDB78177F09EC00673520 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E24EDB7E177F09EC00673520 /* SenTestingKit.framework in Frameworks */,
+				E24EDB7F177F09EC00673520 /* UIKit.framework in Frameworks */,
+				E24EDB80177F09EC00673520 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E24EDB3F177F09EC00673520 = {
+			isa = PBXGroup;
+			children = (
+				E24EDB94177F09FC00673520 /* QMBTabs */,
+				E24EDB51177F09EC00673520 /* QMBTabs Demo */,
+				E24EDB83177F09EC00673520 /* QMBTabs DemoTests */,
+				E24EDB4A177F09EC00673520 /* Frameworks */,
+				E24EDB49177F09EC00673520 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E24EDB49177F09EC00673520 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E24EDB48177F09EC00673520 /* QMBTabs Demo.app */,
+				E24EDB7C177F09EC00673520 /* QMBTabs DemoTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E24EDB4A177F09EC00673520 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E24EDB4B177F09EC00673520 /* UIKit.framework */,
+				E24EDB4D177F09EC00673520 /* Foundation.framework */,
+				E24EDB4F177F09EC00673520 /* CoreGraphics.framework */,
+				E24EDB7D177F09EC00673520 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E24EDB51177F09EC00673520 /* QMBTabs Demo */ = {
+			isa = PBXGroup;
+			children = (
+				E24EDB5A177F09EC00673520 /* QMBAppDelegate.h */,
+				E24EDB5B177F09EC00673520 /* QMBAppDelegate.m */,
+				E24EDB63177F09EC00673520 /* MainStoryboard_iPhone.storyboard */,
+				E24EDB66177F09EC00673520 /* MainStoryboard_iPad.storyboard */,
+				E24EDB52177F09EC00673520 /* Supporting Files */,
+				E24EDBA01780CF7600673520 /* SampleTabViewController.h */,
+				E24EDBA11780CF7600673520 /* SampleTabViewController.m */,
+			);
+			path = "QMBTabs Demo";
+			sourceTree = "<group>";
+		};
+		E24EDB52177F09EC00673520 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E24EDB53177F09EC00673520 /* QMBTabs Demo-Info.plist */,
+				E24EDB54177F09EC00673520 /* InfoPlist.strings */,
+				E24EDB57177F09EC00673520 /* main.m */,
+				E24EDB59177F09EC00673520 /* QMBTabs Demo-Prefix.pch */,
+				E24EDB5D177F09EC00673520 /* Default.png */,
+				E24EDB5F177F09EC00673520 /* Default@2x.png */,
+				E24EDB61177F09EC00673520 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E24EDB83177F09EC00673520 /* QMBTabs DemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				E24EDB89177F09EC00673520 /* QMBTabs_DemoTests.h */,
+				E24EDB8A177F09EC00673520 /* QMBTabs_DemoTests.m */,
+				E24EDB84177F09EC00673520 /* Supporting Files */,
+			);
+			path = "QMBTabs DemoTests";
+			sourceTree = "<group>";
+		};
+		E24EDB84177F09EC00673520 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E24EDB85177F09EC00673520 /* QMBTabs DemoTests-Info.plist */,
+				E24EDB86177F09EC00673520 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E24EDB94177F09FC00673520 /* QMBTabs */ = {
+			isa = PBXGroup;
+			children = (
+				E24EDB95177F0AAB00673520 /* QMBTabViewController.h */,
+				E24EDB96177F0AAB00673520 /* QMBTabViewController.m */,
+				E24EDB98177F0D4400673520 /* QMBTabBar.h */,
+				E24EDB99177F0D4400673520 /* QMBTabBar.m */,
+				E24EDB9B177F192400673520 /* QMBTab.h */,
+				E24EDB9C177F192400673520 /* QMBTab.m */,
+				E24EDB9E177F193400673520 /* QMBTab.xib */,
+			);
+			name = QMBTabs;
+			path = ../QMBTabs;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E24EDB47177F09EC00673520 /* QMBTabs Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E24EDB8E177F09EC00673520 /* Build configuration list for PBXNativeTarget "QMBTabs Demo" */;
+			buildPhases = (
+				E24EDB44177F09EC00673520 /* Sources */,
+				E24EDB45177F09EC00673520 /* Frameworks */,
+				E24EDB46177F09EC00673520 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "QMBTabs Demo";
+			productName = "QMBTabs Demo";
+			productReference = E24EDB48177F09EC00673520 /* QMBTabs Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E24EDB7B177F09EC00673520 /* QMBTabs DemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E24EDB91177F09EC00673520 /* Build configuration list for PBXNativeTarget "QMBTabs DemoTests" */;
+			buildPhases = (
+				E24EDB77177F09EC00673520 /* Sources */,
+				E24EDB78177F09EC00673520 /* Frameworks */,
+				E24EDB79177F09EC00673520 /* Resources */,
+				E24EDB7A177F09EC00673520 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E24EDB82177F09EC00673520 /* PBXTargetDependency */,
+			);
+			name = "QMBTabs DemoTests";
+			productName = "QMBTabs DemoTests";
+			productReference = E24EDB7C177F09EC00673520 /* QMBTabs DemoTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E24EDB40177F09EC00673520 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = QMB;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Toni Möckel";
+			};
+			buildConfigurationList = E24EDB43177F09EC00673520 /* Build configuration list for PBXProject "QMBTabs Demo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E24EDB3F177F09EC00673520;
+			productRefGroup = E24EDB49177F09EC00673520 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E24EDB47177F09EC00673520 /* QMBTabs Demo */,
+				E24EDB7B177F09EC00673520 /* QMBTabs DemoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E24EDB46177F09EC00673520 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E24EDB56177F09EC00673520 /* InfoPlist.strings in Resources */,
+				E24EDB5E177F09EC00673520 /* Default.png in Resources */,
+				E24EDB60177F09EC00673520 /* Default@2x.png in Resources */,
+				E24EDB62177F09EC00673520 /* Default-568h@2x.png in Resources */,
+				E24EDB65177F09EC00673520 /* MainStoryboard_iPhone.storyboard in Resources */,
+				E24EDB68177F09EC00673520 /* MainStoryboard_iPad.storyboard in Resources */,
+				E24EDB9F177F193400673520 /* QMBTab.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E24EDB79177F09EC00673520 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E24EDB88177F09EC00673520 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E24EDB7A177F09EC00673520 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E24EDB44177F09EC00673520 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E24EDB58177F09EC00673520 /* main.m in Sources */,
+				E24EDB5C177F09EC00673520 /* QMBAppDelegate.m in Sources */,
+				E24EDB97177F0AAB00673520 /* QMBTabViewController.m in Sources */,
+				E24EDB9A177F0D4400673520 /* QMBTabBar.m in Sources */,
+				E24EDB9D177F192400673520 /* QMBTab.m in Sources */,
+				E24EDBA21780CF7600673520 /* SampleTabViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E24EDB77177F09EC00673520 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E24EDB8B177F09EC00673520 /* QMBTabs_DemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E24EDB82177F09EC00673520 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E24EDB47177F09EC00673520 /* QMBTabs Demo */;
+			targetProxy = E24EDB81177F09EC00673520 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E24EDB54177F09EC00673520 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E24EDB55177F09EC00673520 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		E24EDB63177F09EC00673520 /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E24EDB64177F09EC00673520 /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		E24EDB66177F09EC00673520 /* MainStoryboard_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E24EDB67177F09EC00673520 /* en */,
+			);
+			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		E24EDB86177F09EC00673520 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E24EDB87177F09EC00673520 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E24EDB8C177F09EC00673520 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E24EDB8D177F09EC00673520 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E24EDB8F177F09EC00673520 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "QMBTabs Demo/QMBTabs Demo-Prefix.pch";
+				INFOPLIST_FILE = "QMBTabs Demo/QMBTabs Demo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E24EDB90177F09EC00673520 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "QMBTabs Demo/QMBTabs Demo-Prefix.pch";
+				INFOPLIST_FILE = "QMBTabs Demo/QMBTabs Demo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		E24EDB92177F09EC00673520 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/QMBTabs Demo.app/QMBTabs Demo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "QMBTabs Demo/QMBTabs Demo-Prefix.pch";
+				INFOPLIST_FILE = "QMBTabs DemoTests/QMBTabs DemoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		E24EDB93177F09EC00673520 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/QMBTabs Demo.app/QMBTabs Demo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "QMBTabs Demo/QMBTabs Demo-Prefix.pch";
+				INFOPLIST_FILE = "QMBTabs DemoTests/QMBTabs DemoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E24EDB43177F09EC00673520 /* Build configuration list for PBXProject "QMBTabs Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E24EDB8C177F09EC00673520 /* Debug */,
+				E24EDB8D177F09EC00673520 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E24EDB8E177F09EC00673520 /* Build configuration list for PBXNativeTarget "QMBTabs Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E24EDB8F177F09EC00673520 /* Debug */,
+				E24EDB90177F09EC00673520 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E24EDB91177F09EC00673520 /* Build configuration list for PBXNativeTarget "QMBTabs DemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E24EDB92177F09EC00673520 /* Debug */,
+				E24EDB93177F09EC00673520 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E24EDB40177F09EC00673520 /* Project object */;
+}
