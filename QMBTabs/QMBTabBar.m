@@ -14,7 +14,7 @@
 }
 
 @property (nonatomic, strong) UIView *highlightBar;
-
+@property (nonatomic, strong) QMBTab *selectedTab;
 @end
 
 
@@ -80,37 +80,41 @@ static float kMinTabWidth = 90.0f;
 
 - (void) rearrangeTabs
 {
+    NSLog(@"breite %f",self.frame.size.width);
+    
     float currentTabItemWidth = kMaxTabWidth;
-    if ((currentTabItemWidth * [_items count]) > self.frame.size.width){
-        currentTabItemWidth = self.frame.size.width / ([_items count] +1 );
+    int i = 0;
+    float inset = 15.0;
+    
+    if (((currentTabItemWidth * [_items count]) - (inset * [_items count])) > self.frame.size.width){
+        currentTabItemWidth = self.frame.size.width  / ([_items count]);
         if (currentTabItemWidth < kMinTabWidth){
             currentTabItemWidth = kMinTabWidth;
         }
     }
     
-    int i = 0;
-    float inset = 15.0;
+    [self setContentSize:CGSizeMake([_items count] * currentTabItemWidth - [_items count]*inset, self.frame.size.height)];
     
     for (QMBTab *tab in _items) {
 
         float newXPostion = i * (currentTabItemWidth - inset);
-        [tab setFrame:CGRectMake(newXPostion,
-                                 tab.frame.origin.y,
-                                 currentTabItemWidth,
-                                 tab.frame.size.height)];
-        [tab setOrgFrame:tab.frame];
+        CGRect frame = CGRectMake(newXPostion,
+                                  tab.frame.origin.y,
+                                  currentTabItemWidth,
+                                  tab.frame.size.height);
         
-        if (_activeTabIndex < i){
-            [self sendSubviewToBack:tab];
-        }
-        //[tab.view setFrame:CGRectMake(0, 0,tab.frame.size.width, tab.frame.size.height)];
+        [tab setOrgFrame:frame];
+        frame.origin.x = [self calcXPostionOfTab:tab];
+        [tab setFrame:frame];
+
+        [tab setNeedsDisplay];
         [tab layoutSubviews];
         i++;
     }
     
-    
-    [self setContentSize:CGSizeMake(i * currentTabItemWidth - i*inset, self.frame.size.height)];
     [self bringSubviewToFront:_highlightBar];
+    [self bringSubviewToFront:_selectedTab];
+
     
 }
 
@@ -135,40 +139,38 @@ static float kMinTabWidth = 90.0f;
 #pragma mark - ScrollView Delegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    //Stacking
-
-    if (self.contentOffset.x > 0){
-        
-    }
     
-    NSLog(@"%f",self.contentOffset.x);
-    
+   
     for (QMBTab *tab in _items) {
-
-        if (tab.orgFrame.origin.x <= self.contentOffset.x){
-            CGRect frame = tab.frame;
-            frame.origin.x = self.contentOffset.x;
-            tab.frame = frame;
-        }else if (tab.orgFrame.origin.x + tab.orgFrame.size.width > self.frame.size.width + self.contentOffset.x){
-            CGRect frame = tab.frame;
-            frame.origin.x = self.frame.size.width - tab.frame.size.width + self.contentOffset.x;
-            tab.frame = frame;
-        }else{
-            CGRect frame = tab.frame;
-            frame.origin.x = tab.orgFrame.origin.x;
-            tab.frame = frame;
-            
-        }
         
-        
+        CGRect frame = tab.frame;
+        frame.origin.x = [self calcXPostionOfTab:tab];
+        tab.frame = frame;
         
     }
-
     
+}
+
+- (float) calcXPostionOfTab:(QMBTab *)tab
+{
+    if (tab.orgFrame.origin.x <= self.contentOffset.x){
+        //NSLog(@"1: %f",self.contentOffset.x);
+        return self.contentOffset.x;
+    }else if (tab.orgFrame.origin.x + tab.orgFrame.size.width > self.frame.size.width + self.contentOffset.x){
+        return self.frame.size.width - tab.orgFrame.size.width + self.contentOffset.x;
+    }else{
+        //NSLog(@"3: %f",tab.orgFrame.origin.x);
+        return tab.orgFrame.origin.x;
+    }
+}
+
+- (void)drawRect:(CGRect)rect{
+    [self rearrangeTabs];
 }
 
 - (void)layoutSubviews{
     [super layoutSubviews];
+    
     
     // Highlight Bar should stack and not scroll
     [_highlightBar setFrame:CGRectMake(self.contentOffset.x, _highlightBar.frame.origin.y, _highlightBar.frame.size.width, _highlightBar.frame.size.height)];
@@ -182,16 +184,18 @@ static float kMinTabWidth = 90.0f;
     for (QMBTab *tabItem in _items) {
         if (tab == tabItem){
             [tabItem setHighlighted:true];
-           
         }else {
             [tabItem setHighlighted:false];
-            [self bringSubviewToFront:tabItem];
+            
         }
+        [self sendSubviewToBack:tabItem];
         i++;
     }
     
+    _selectedTab = tab;
+    
     [self bringSubviewToFront:_highlightBar];
-    [self bringSubviewToFront:tab];
+    [self bringSubviewToFront:_selectedTab];
     
 }
 

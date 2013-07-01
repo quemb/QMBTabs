@@ -83,7 +83,7 @@ const CGFloat kLTTabCurvature = 10.0f;
 }
 
 
-- (void)drawRect:(CGRect)dirtyRect
+- (void)drawRect:(CGRect)rect
 {
 
 	CGContextRef context = UIGraphicsGetCurrentContext();
@@ -123,6 +123,10 @@ const CGFloat kLTTabCurvature = 10.0f;
     
     
     [self.closeButton setHidden:!_highlighted];
+}
+
+- (void)layoutSubviews{
+    [super layoutSubviews];
 }
 
 - (void) setHighlighted:(BOOL)highlighted

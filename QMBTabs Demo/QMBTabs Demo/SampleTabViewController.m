@@ -38,10 +38,15 @@ static UIColor *randomColor() {
 	
     self.delegate = self;
     
-    for (int i = 0; i<20; i++) {
+    for (int i = 0; i<19; i++) {
         UIViewController *viewController = [[UIViewController alloc] init];
         [viewController.view setBackgroundColor:randomColor()];
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 5, 300, 50)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        [label setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight ];
+        [label setTextAlignment:NSTextAlignmentCenter];
+        [label setFont:[UIFont systemFontOfSize:600.0f]];
+        [label setTextColor:[UIColor colorWithWhite:1.0f alpha:0.5f]];
+        [label setBackgroundColor:[UIColor clearColor]];
         [label setText:[NSString stringWithFormat:@"%d",i]];
         viewController.title = [NSString stringWithFormat:@"%d",i];
         [viewController.view addSubview:label];
