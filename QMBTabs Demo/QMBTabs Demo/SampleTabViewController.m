@@ -51,5 +51,16 @@ static UIColor *randomColor() {
     
 }
 
+#pragma mark - QMBTabViewController Delegate
+
+- (void)tabViewController:(QMBTabViewController *)tabViewController didSelectViewController:(UIViewController *)viewController
+{
+    NSLog(@"Tab Chaned to %d", [tabViewController indexForViewController:viewController]);
+}
+
+- (BOOL)tabViewController:(QMBTabViewController *)tabViewController shouldSelectViewController:(UIViewController *)viewController
+{
+    return YES;
+}
 
 @end

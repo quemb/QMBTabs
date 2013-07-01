@@ -55,6 +55,10 @@
     if ([_viewControllers containsObject:controller])
         return;
     
+    if ([self.delegate respondsToSelector:@selector(tabViewController:willAddViewController:)]){
+        [self.delegate performSelector:@selector(tabViewController:willAddViewController:) withObject:self withObject:controller];
+    }
+    
     [self addChildViewController:controller];
     [_viewControllers addObject:controller];
 
@@ -79,7 +83,9 @@
     [_tabBar selectTab:[_tabBar tabItemForIndex:[self indexForViewController:self.selectedViewController]]];
     [controller didMoveToParentViewController:self];
     
-    
+    if ([self.delegate respondsToSelector:@selector(tabViewController:didAddViewController:)]){
+        [self.delegate performSelector:@selector(tabViewController:didAddViewController:) withObject:self withObject:controller];
+    }
 }
 
 - (void)selectViewController:(UIViewController *)controller{
@@ -95,15 +101,28 @@
                             completion:^(BOOL finished) {
                                 self.selectedViewController = controller;
                                 [_tabBar selectTab:[_tabBar tabItemForIndex:[self indexForViewController:self.selectedViewController]]];
+                                
+                                if ([self.delegate respondsToSelector:@selector(tabViewController:didSelectViewController:)]){
+                                    [self.delegate performSelector:@selector(tabViewController:didSelectViewController:) withObject:self withObject:self.selectedViewController];
+                                }
+                                
                             }];
 }
 
 #pragma mark - QMBTabBar Delegate
 
 - (void)tabBar:(QMBTabBar *)tabBar didChangeTabItem:(QMBTab *)tab{
-    NSLog(@"%d",[tabBar indexForTabItem:tab]);
+    
+    BOOL select = YES;
     UIViewController *newViewController = [_viewControllers objectAtIndex:[tabBar indexForTabItem:tab]];
-    [self selectViewController:newViewController];
+    
+    if ([self.delegate respondsToSelector:@selector(tabViewController:shouldSelectViewController:)]){
+        select = (BOOL)[self.delegate performSelector:@selector(tabViewController:shouldSelectViewController:) withObject:self withObject:newViewController];
+    }
+    if (select){
+        [self selectViewController:newViewController];
+    }
+    
 }
 
 - (NSUInteger)indexForViewController:(UIViewController *)viewcontroller
@@ -121,23 +140,29 @@
 - (void)tabBar:(QMBTabBar *)tabBar willRemoveTabItem:(QMBTab *)tab
 {
     
+    int removeIndex = [tabBar indexForTabItem:tab];
+    UIViewController *removeController = [_viewControllers objectAtIndex:removeIndex];
+    
+    if ([self.delegate respondsToSelector:@selector(tabViewController:willRemoveViewController:)]){
+        [self.delegate performSelector:@selector(tabViewController:willRemoveViewController:) withObject:self withObject:removeController];
+    }
+    
     if ( [self indexForViewController:self.selectedViewController]+1 < [_viewControllers count]){
         [self selectViewController:[_viewControllers objectAtIndex:[self indexForViewController:self.selectedViewController]+1]];
     }else if ([self indexForViewController:self.selectedViewController]-1 < [_viewControllers count]){
         [self selectViewController:[_viewControllers objectAtIndex:[self indexForViewController:self.selectedViewController]-1]];
     }
     
-    int removeIndex = [tabBar indexForTabItem:tab];
-    UIViewController *removeController = [_viewControllers objectAtIndex:removeIndex];
     [removeController willMoveToParentViewController:nil];
     [removeController.view removeFromSuperview];
     
     [_viewControllers removeObject:removeController];
-}
-
-- (void)tabBar:(QMBTabBar *)tabBar didRemoveTabItem:(QMBTab *)tab
-{
+    
+    if ([self.delegate respondsToSelector:@selector(tabViewController:didRemoveViewController:)]){
+        [self.delegate performSelector:@selector(tabViewController:didRemoveViewController:) withObject:self withObject:removeController];
+    }
     
 }
+
 
 @end

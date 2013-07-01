@@ -121,22 +121,8 @@ const CGFloat kLTTabCurvature = 10.0f;
     [self.titleLabel setFrame:CGRectMake(20.0f, 2.0f, self.frame.size.width-(2*20.0f), self.frame.size.height)];
     [self.closeButton setFrame:CGRectMake(self.frame.size.width-30.0f, 12.0f, 15.0f, 15.0f)];
     
-    [UIView animateWithDuration:0.2f
-                          delay:0.0f
-                        options: UIViewAnimationOptionCurveEaseInOut
-                     animations:^{
-                         CGRect frame = self.frame;
-                         if (_highlighted){
-                             frame.size.height = _orgFrame.size.height - 5.0f;
-                             
-                         }else {
-                             frame.size.height = _orgFrame.size.height;
-                         }
-                         self.frame = frame;
-                         
-                         [self.closeButton setHidden:!_highlighted];
-                     }
-                     completion:nil];
+    
+    [self.closeButton setHidden:!_highlighted];
 }
 
 - (void) setHighlighted:(BOOL)highlighted

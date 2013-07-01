@@ -15,14 +15,19 @@
 @protocol QMBTabViewControllerDelegate <NSObject>
 
 @optional
+// Controller's title will be shown in tabs by default. Use this method to set the title on your own.
 - (NSString *) tabViewController:(QMBTabViewController *)tabViewController titleForTabAtIndex:(NSUInteger)index;
 
-- (BOOL)tabViewController:(QMBTabViewController *)tabBarController shouldSelectViewController:(UIViewController *)viewController;
-- (void)tabBarController:(QMBTabViewController *)tabBarController didSelectViewController:(UIViewController *)viewController;
+// If false is returned to tab view won't change to the target view controller (By default = yes)
+- (BOOL)tabViewController:(QMBTabViewController *)tabViewController shouldSelectViewController:(UIViewController *)viewController;
+- (void)tabViewController:(QMBTabViewController *)tabViewController didSelectViewController:(UIViewController *)viewController;
 
-- (void)tabBarController:(QMBTabViewController *)tabBarController willBeginCustomizingViewControllers:(NSArray *)viewControllers;
-- (void)tabBarController:(QMBTabViewController *)tabBarController willEndCustomizingViewControllers:(NSArray *)viewControllers changed:(BOOL)changed;
-- (void)tabBarController:(QMBTabViewController *)tabBarController didEndCustomizingViewControllers:(NSArray *)viewControllers changed:(BOOL)changed;
+- (void)tabViewController:(QMBTabViewController *)tabViewController willAddViewController:(UIViewController *)viewController;
+- (void)tabViewController:(QMBTabViewController *)tabViewController didAddViewController:(UIViewController *)viewController;
+
+- (void)tabViewController:(QMBTabViewController *)tabViewController willRemoveViewController:(UIViewController *)viewController;
+- (void)tabViewController:(QMBTabViewController *)tabViewController didRemoveViewController:(UIViewController *)viewController;
+
 @end
 
 @interface QMBTabViewController : UIViewController<QMBTabBarDelegate>

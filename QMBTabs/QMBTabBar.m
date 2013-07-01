@@ -41,6 +41,7 @@ static float kMinTabWidth = 90.0f;
         
         if (!_highlightBar){
             _highlightBar = [[UIView alloc] initWithFrame:CGRectMake(0, self.frame.size.height-5.0f, self.frame.size.width, 5.0f)];
+            [_highlightBar setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
         }
         
         [_highlightBar setBackgroundColor:self.highlightColor];
@@ -56,7 +57,7 @@ static float kMinTabWidth = 90.0f;
 {
     
     
-    QMBTab *tabItem = [[QMBTab alloc] initWithFrame:CGRectMake(0, 0, 0, self.frame.size.height)];
+    QMBTab *tabItem = [[QMBTab alloc] initWithFrame:CGRectMake(0, 0, 0, self.frame.size.height-_highlightBar.frame.size.height)];
     tabItem.titleLabel.text = NSLocalizedString(@"New tab", @"QMBTabBar New Tab Title");
     [tabItem setDelegate:self];
     
@@ -94,7 +95,7 @@ static float kMinTabWidth = 90.0f;
     
     for (QMBTab *tab in _items) {
 
-        float newXPostion = i * currentTabItemWidth;
+        float newXPostion = i * (currentTabItemWidth - 15.0f);
         [tab setFrame:CGRectMake(newXPostion,
                                  tab.frame.origin.y,
                                  currentTabItemWidth,
