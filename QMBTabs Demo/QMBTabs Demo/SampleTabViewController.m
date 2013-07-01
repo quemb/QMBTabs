@@ -14,11 +14,11 @@
 
 #define ARC4RANDOM_MAX 0x100000000
 
-static UIColor *randomLightColor() {
+static UIColor *randomColor() {
     return [UIColor colorWithRed:(CGFloat) arc4random() / ARC4RANDOM_MAX + 0.2f
                            green:(CGFloat) arc4random() / ARC4RANDOM_MAX + 0.2f
                             blue:(CGFloat) arc4random() / ARC4RANDOM_MAX + 0.2f
-                           alpha:0.95f];
+                           alpha:1.0f];
 }
 
 @implementation SampleTabViewController
@@ -36,24 +36,20 @@ static UIColor *randomLightColor() {
 {
     [super viewDidLoad];
 	
-    NSMutableArray *array = [NSMutableArray array];
-    for (int i = 0; i<10; i++) {
+    self.delegate = self;
+    
+    for (int i = 0; i<4; i++) {
         UIViewController *viewController = [[UIViewController alloc] init];
-        [viewController.view setBackgroundColor:randomLightColor()];
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 100, 300, 50)];
+        [viewController.view setBackgroundColor:randomColor()];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 5, 300, 50)];
         [label setText:[NSString stringWithFormat:@"%d",i]];
+        viewController.title = [NSString stringWithFormat:@"%d",i];
         [viewController.view addSubview:label];
-        [array addObject:viewController];
+        [self addViewController:viewController];
     }
-    [self setViewControllers:array animated:YES];
     
     
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 @end

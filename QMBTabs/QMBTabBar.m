@@ -27,7 +27,9 @@ static float kMinTabWidth = 90.0f;
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.items = [NSMutableArray array];
+        self.delegate = self;
+        
+        _items = [NSMutableArray array];
         _activeTabIndex = 0;
         
         self.normalColor = [UIColor colorWithWhite:0.8 alpha:1];
@@ -35,6 +37,7 @@ static float kMinTabWidth = 90.0f;
         
         [self setShowsHorizontalScrollIndicator:NO];
         [self setShowsVerticalScrollIndicator:NO];
+        [self setAlwaysBounceHorizontal:YES];
         
         if (!_highlightBar){
             _highlightBar = [[UIView alloc] initWithFrame:CGRectMake(0, self.frame.size.height-5.0f, self.frame.size.width, 5.0f)];
@@ -48,25 +51,20 @@ static float kMinTabWidth = 90.0f;
     return self;
 }
 
-- (void)drawRect:(CGRect)rect{
-    
-    
-    
-}
 
-
-- (void)addTabItem
+- (void) addTabItemWithCompletition:(void (^)(QMBTab *tabItem))completition
 {
     
     
     QMBTab *tabItem = [[QMBTab alloc] initWithFrame:CGRectMake(0, 0, 0, self.frame.size.height)];
-    tabItem.titleLabel.text = [NSString stringWithFormat:@"%d",[self.items count]];
+    tabItem.titleLabel.text = NSLocalizedString(@"New tab", @"QMBTabBar New Tab Title");
     [tabItem setDelegate:self];
     
-    [self.items addObject:tabItem];
+    completition(tabItem);
+    
+    [_items addObject:tabItem];
     [self addSubview:tabItem];
     
-    self.selected = [self.items count]-1;
     
     [UIView animateWithDuration:0.5
                           delay:0.0
@@ -80,14 +78,13 @@ static float kMinTabWidth = 90.0f;
                          
                      }];
     
-    
 }
 
 - (void) rearrangeTabs
 {
     float currentTabItemWidth = kMaxTabWidth;
-    if ((currentTabItemWidth * [self.items count]) > self.frame.size.width){
-        currentTabItemWidth = self.frame.size.width / ([self.items count] +1 );
+    if ((currentTabItemWidth * [_items count]) > self.frame.size.width){
+        currentTabItemWidth = self.frame.size.width / ([_items count] +1 );
         if (currentTabItemWidth < kMinTabWidth){
             currentTabItemWidth = kMinTabWidth;
         }
@@ -95,7 +92,7 @@ static float kMinTabWidth = 90.0f;
     
     int i = 0;
     
-    for (QMBTab *tab in self.items) {
+    for (QMBTab *tab in _items) {
 
         float newXPostion = i * currentTabItemWidth;
         [tab setFrame:CGRectMake(newXPostion,
@@ -115,35 +112,74 @@ static float kMinTabWidth = 90.0f;
     
     [self setContentSize:CGSizeMake(i * currentTabItemWidth, self.frame.size.height)];
     [self bringSubviewToFront:_highlightBar];
-    [_highlightBar setFrame:CGRectMake(-(i * currentTabItemWidth)/2, _highlightBar.frame.origin.y, 2*(i * currentTabItemWidth), _highlightBar.frame.size.height)];
+    
 }
-/*
--(void)layoutSubviews
-{
-    [super layoutSubviews];
-    // Stacking
 
+- (NSUInteger) indexForTabItem:(QMBTab *)tabItem
+{
+    int i = 0;
+    for (QMBTab *tab in _items) {
+        if (tabItem == tab){
+            return i;
+        }
+        i++;
+    }
+    
+    return -1;
+}
+
+- (QMBTab *)tabItemForIndex:(int)index
+{
+    return [_items objectAtIndex:index];
+}
+
+#pragma mark - ScrollView Delegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    //Stacking
+    /*
     if (self.contentOffset.x > 0){
-        for (QMBTab *tab in self.items) {
-            if (tab.frame.origin.x <= self.contentOffset.x){
-                CGRect frame = tab.frame;
-                frame.origin.x = self.contentOffset.x;
-                tab.frame = frame;
-            }
+        
+    }
+    
+    for (QMBTab *tab in _items) {
+
+        if (tab.orgFrame.origin.x <= self.contentOffset.x){
+            CGRect frame = tab.frame;
+            frame.origin.x = self.contentOffset.x;
+            tab.frame = frame;
+        }else if (self.contentOffset.x + tab.orgFrame.origin.x + tab.orgFrame.size.width > self.frame.size.width){
+            CGRect frame = tab.frame;
+            frame.origin.x = tab.orgFrame.origin.x - (self.contentSize.width - self.frame.size.width) + self.contentOffset.x;
+            tab.frame = frame;
+        }else if (tab.frame.origin.x != tab.orgFrame.origin.x){
+            CGRect frame = tab.frame;
+            frame.origin.x = tab.orgFrame.origin.x;
+            tab.frame = frame;
             
         }
+        
+        
+        
     }
+     */
+    
 }
-*/
-#pragma mark - QMBTab Delegate
 
-- (void)didSelectTab:(QMBTab *)tab{
+- (void)layoutSubviews{
+    [super layoutSubviews];
+    
+    // Highlight Bar should stack and not scroll
+    [_highlightBar setFrame:CGRectMake(self.contentOffset.x, _highlightBar.frame.origin.y, _highlightBar.frame.size.width, _highlightBar.frame.size.height)];
+}
+
+- (void) selectTab:(QMBTab *)tab{
+    
     int i =0;
-
-    for (QMBTab *tabItem in self.items) {
+    
+    for (QMBTab *tabItem in _items) {
         if (tab == tabItem){
             [tabItem setHighlighted:true];
-            self.selected = i;
             [self bringSubviewToFront:_highlightBar];
             [self bringSubviewToFront:tabItem];
         }else {
@@ -152,9 +188,41 @@ static float kMinTabWidth = 90.0f;
         i++;
     }
     
+}
+
+#pragma mark - QMBTab Delegate
+
+- (void)didSelectTab:(QMBTab *)tab{
+    
+    
     if ([self.tabBarDelegeate respondsToSelector:@selector(tabBar:didChangeTabItem:)]){
         [self.tabBarDelegeate performSelector:@selector(tabBar:didChangeTabItem:) withObject:self withObject:tab];
     }
+}
+
+- (void)tab:(QMBTab *)tab didSelectCloseButton:(UIButton *)button{
+    
+    if ([self.tabBarDelegeate respondsToSelector:@selector(tabBar:willRemoveTabItem:)]){
+        [self.tabBarDelegeate performSelector:@selector(tabBar:willRemoveTabItem:) withObject:self withObject:tab];
+    }
+    
+    [tab removeFromSuperview];
+    [_items removeObject:tab];
+    
+    [UIView animateWithDuration:0.5
+                          delay:0.0
+                        options: UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         [self rearrangeTabs];
+                     }
+                     completion:^(BOOL finished){
+
+                     }];
+    
+    if ([self.tabBarDelegeate respondsToSelector:@selector(tabBar:didRemoveTabItem:)]){
+        [self.tabBarDelegeate performSelector:@selector(tabBar:didRemoveTabItem:) withObject:self withObject:tab];
+    }
+    
 }
 
 @end

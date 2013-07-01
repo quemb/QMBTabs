@@ -8,6 +8,6 @@
 
 #import "QMBTabViewController.h"
 
-@interface SampleTabViewController : QMBTabViewController
+@interface SampleTabViewController : QMBTabViewController<QMBTabViewControllerDelegate>
 
 @end

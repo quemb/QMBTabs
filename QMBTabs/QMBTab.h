@@ -21,6 +21,8 @@ FOUNDATION_EXPORT const CGFloat kLTTabCurvature;
 
 - (void) didSelectTab:(QMBTab *)tab;
 
+- (void) tab:(QMBTab *)tab didSelectCloseButton:(UIButton *)button;
+
 @end
 
 @interface QMBTab : UIView
@@ -29,7 +31,8 @@ FOUNDATION_EXPORT const CGFloat kLTTabCurvature;
 @property (nonatomic, assign, setter = setHighlighted:) BOOL highlighted;
 @property (nonatomic, assign) CGRect orgFrame;
 
-@property (nonatomic, weak) IBOutlet UILabel *titleLabel;
+@property (nonatomic, weak) UILabel *titleLabel;
+@property (nonatomic, weak) UIButton *closeButton;
 
 @property (strong, nonatomic) UIColor *innerBackgroundColor;
 @property (strong, nonatomic) UIColor *foregroundColor;

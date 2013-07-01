@@ -42,6 +42,25 @@ const CGFloat kLTTabCurvature = 10.0f;
         [tapGesture setNumberOfTapsRequired:1];
         [tapGesture setNumberOfTouchesRequired:1];
         [self addGestureRecognizer:tapGesture];
+        
+        //Title Label
+        if (!self.titleLabel){
+            UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 2.0f, self.frame.size.width-(2*20.0f), self.frame.size.height)];
+            [titleLabel setText:NSLocalizedString(@"New tab ist what it is", nil)];
+            [titleLabel setBackgroundColor:[UIColor clearColor]];
+            [self addSubview:titleLabel];
+            self.titleLabel = titleLabel;
+        }
+        
+        if (!self.closeButton){
+            UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+            [closeButton addTarget:self action:@selector(closeButtonTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
+            [closeButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
+            [closeButton setFrame:CGRectMake(self.frame.size.width-30.0f, 12.0f, 15.0f, 15.0f)];
+            [closeButton setHidden:YES];
+            [self addSubview:closeButton];
+            self.closeButton = closeButton;
+        }
 	}
 	return self;
 }
@@ -71,24 +90,15 @@ const CGFloat kLTTabCurvature = 10.0f;
 	UIColor *color;
 	CGMutablePathRef path;
 	CGPoint point;
-	CGFloat lengths[2];
-    CGFloat cornerOffset = (kLTTabOuterHeight - kLTTabInnerHeight) / 2;
-    CGFloat startY = self.frame.size.height;//(kLTTabViewHeight - kLTTabOuterHeight) / 2;
-	/*
-    if (_highlighted){
-        startY -= 5.0f;
-    }
-    */
+    CGFloat startY = self.frame.size.height;
+
 	CGContextSaveGState(context);
     
-#pragma mark - Shadow Begin
-    
-	color = [UIColor colorWithWhite:0.1f alpha:0.3f];
+    // Shadow
+	color = [UIColor colorWithWhite:0.2f alpha:0.4f];
     CGContextSaveGState(context);
     CGContextSetShadowWithColor(context, CGSizeMake(0.0f, 0.5f), 7.0f, [color CGColor]);
 	CGContextBeginTransparencyLayer(context, NULL);
-	
-#pragma mark - Tab
     
 	path = CGPathCreateMutable();
 	point = CGPointMake(0.0f, startY);
@@ -104,59 +114,29 @@ const CGFloat kLTTabCurvature = 10.0f;
 	CGContextAddPath(context, path);
 	CGContextFillPath(context);
 	CGPathRelease(path);
-    
-    CGRect frame = self.frame;
-    if (_highlighted){
-        frame.size.height = _orgFrame.size.height - 5.0f;
-    }else {
-        frame.size.height = _orgFrame.size.height;
-    }
-    self.frame = frame;
-    /*
-    path = CGPathCreateMutable();
-	point = CGPointMake(-1000.0f, startY);
-	CGPathMoveToPoint(path, NULL, point.x, point.y);
-    
-    CGPathAddLineToPoint(path, NULL, 1000.0f, startY);
-    CGPathAddLineToPoint(path, NULL, 1000.0f, startY-5.0f);
-    CGPathAddLineToPoint(path, NULL, -1000.0f, startY-5.0f);
-    
-	CGPathCloseSubpath(path);
-	[[self highlightColor] setFill];
-	CGContextAddPath(context, path);
-	CGContextFillPath(context);
-	CGPathRelease(path);
-    */
-    
-#pragma mark - Shadow End
 
 	CGContextEndTransparencyLayer(context);
 	CGContextRestoreGState(context);
-
-#pragma mark - Dots
-    /*
-	path = CGPathCreateMutable();
-	point = CGPointMake(-1000.0f, startY);
-	CGPathMoveToPoint(path, NULL, point.x, point.y);
     
-    CGPathAddLineToPoint(path, NULL, 5.0f, startY);
-    CGPathAddLineToPoint(path, NULL, 15.0f, 10.0f);
-    CGPathAddLineToPoint(path, NULL, self.frame.size.width-15.0f, 10.0f);
-    CGPathAddLineToPoint(path, NULL, self.frame.size.width-5.0f, startY);
+    [self.titleLabel setFrame:CGRectMake(20.0f, 2.0f, self.frame.size.width-(2*20.0f), self.frame.size.height)];
+    [self.closeButton setFrame:CGRectMake(self.frame.size.width-30.0f, 12.0f, 15.0f, 15.0f)];
     
-	CGPathCloseSubpath(path);
-	[[self foregroundColor] setStroke];
-    CGContextSetLineWidth(context, 1.0f);
-	CGContextSetLineCap(context, kCGLineCapRound);
-	CGContextSetLineJoin(context, kCGLineJoinRound);
-    lengths[0] = 1.0f;
-	lengths[1] = 2.0f;
-
-	CGContextAddPath(context, path);
-	CGContextStrokePath(context);
-	CGPathRelease(path);
-	*/
-	CGContextRestoreGState(context);
+    [UIView animateWithDuration:0.2f
+                          delay:0.0f
+                        options: UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         CGRect frame = self.frame;
+                         if (_highlighted){
+                             frame.size.height = _orgFrame.size.height - 5.0f;
+                             
+                         }else {
+                             frame.size.height = _orgFrame.size.height;
+                         }
+                         self.frame = frame;
+                         
+                         [self.closeButton setHidden:!_highlighted];
+                     }
+                     completion:nil];
 }
 
 - (void) setHighlighted:(BOOL)highlighted
@@ -176,6 +156,13 @@ const CGFloat kLTTabCurvature = 10.0f;
 - (void) didTap:(id)sender {
     if ([self.delegate respondsToSelector:@selector(didSelectTab:)]){
         [self.delegate performSelector:@selector(didSelectTab:) withObject:self];
+    }
+}
+
+- (void) closeButtonTouchUpInside:(UIButton *)closeButton
+{
+    if ([self.delegate respondsToSelector:@selector(tab:didSelectCloseButton:)]){
+        [self.delegate performSelector:@selector(tab:didSelectCloseButton:) withObject:self withObject:closeButton];
     }
 }
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		89A00D561781878500B91258 /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89A00D551781878500B91258 /* close@2x.png */; };
 		E24EDB4C177F09EC00673520 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E24EDB4B177F09EC00673520 /* UIKit.framework */; };
 		E24EDB4E177F09EC00673520 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E24EDB4D177F09EC00673520 /* Foundation.framework */; };
 		E24EDB50177F09EC00673520 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E24EDB4F177F09EC00673520 /* CoreGraphics.framework */; };
@@ -26,7 +27,6 @@
 		E24EDB97177F0AAB00673520 /* QMBTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E24EDB96177F0AAB00673520 /* QMBTabViewController.m */; };
 		E24EDB9A177F0D4400673520 /* QMBTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E24EDB99177F0D4400673520 /* QMBTabBar.m */; };
 		E24EDB9D177F192400673520 /* QMBTab.m in Sources */ = {isa = PBXBuildFile; fileRef = E24EDB9C177F192400673520 /* QMBTab.m */; };
-		E24EDB9F177F193400673520 /* QMBTab.xib in Resources */ = {isa = PBXBuildFile; fileRef = E24EDB9E177F193400673520 /* QMBTab.xib */; };
 		E24EDBA21780CF7600673520 /* SampleTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E24EDBA11780CF7600673520 /* SampleTabViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		89A00D551781878500B91258 /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@2x.png"; sourceTree = "<group>"; };
 		E24EDB48177F09EC00673520 /* QMBTabs Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "QMBTabs Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E24EDB4B177F09EC00673520 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E24EDB4D177F09EC00673520 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -68,7 +69,6 @@
 		E24EDB99177F0D4400673520 /* QMBTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMBTabBar.m; sourceTree = "<group>"; };
 		E24EDB9B177F192400673520 /* QMBTab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMBTab.h; sourceTree = "<group>"; };
 		E24EDB9C177F192400673520 /* QMBTab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMBTab.m; sourceTree = "<group>"; };
-		E24EDB9E177F193400673520 /* QMBTab.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QMBTab.xib; sourceTree = "<group>"; };
 		E24EDBA01780CF7600673520 /* SampleTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleTabViewController.h; sourceTree = "<group>"; };
 		E24EDBA11780CF7600673520 /* SampleTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleTabViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,6 +97,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		89A00D541781878500B91258 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				89A00D551781878500B91258 /* close@2x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		E24EDB3F177F09EC00673520 = {
 			isa = PBXGroup;
 			children = (
@@ -178,13 +186,13 @@
 		E24EDB94177F09FC00673520 /* QMBTabs */ = {
 			isa = PBXGroup;
 			children = (
+				89A00D541781878500B91258 /* Resources */,
 				E24EDB95177F0AAB00673520 /* QMBTabViewController.h */,
 				E24EDB96177F0AAB00673520 /* QMBTabViewController.m */,
 				E24EDB98177F0D4400673520 /* QMBTabBar.h */,
 				E24EDB99177F0D4400673520 /* QMBTabBar.m */,
 				E24EDB9B177F192400673520 /* QMBTab.h */,
 				E24EDB9C177F192400673520 /* QMBTab.m */,
-				E24EDB9E177F193400673520 /* QMBTab.xib */,
 			);
 			name = QMBTabs;
 			path = ../QMBTabs;
@@ -268,7 +276,7 @@
 				E24EDB62177F09EC00673520 /* Default-568h@2x.png in Resources */,
 				E24EDB65177F09EC00673520 /* MainStoryboard_iPhone.storyboard in Resources */,
 				E24EDB68177F09EC00673520 /* MainStoryboard_iPad.storyboard in Resources */,
-				E24EDB9F177F193400673520 /* QMBTab.xib in Resources */,
+				89A00D561781878500B91258 /* close@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

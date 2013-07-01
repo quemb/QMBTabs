@@ -19,14 +19,6 @@
             <point key="canvasLocation" x="1683" y="706"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="QMBTabViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/QMBTabViewController.h"/>
-        </class>
-        <class className="SampleTabViewController" superclassName="QMBTabViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SampleTabViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

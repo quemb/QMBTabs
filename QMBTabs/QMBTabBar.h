@@ -15,16 +15,23 @@
 
 - (void) tabBar:(QMBTabBar *)tabBar didChangeTabItem:(QMBTab *)tab;
 
+- (void) tabBar:(QMBTabBar *)tabBar willRemoveTabItem:(QMBTab *)tab;
+- (void) tabBar:(QMBTabBar *)tabBar didRemoveTabItem:(QMBTab *)tab;
+
 @end
 
-@interface QMBTabBar : UIScrollView<QMBTabDelegate>
+@interface QMBTabBar : UIScrollView<QMBTabDelegate, UIScrollViewDelegate>
 
 @property (nonatomic, assign) id<QMBTabBarDelegate> tabBarDelegeate;
-@property (nonatomic, strong) NSMutableArray *items;
+@property (nonatomic, strong, readonly) NSMutableArray *items;
 @property (nonatomic, strong) UIColor *highlightColor;
 @property (nonatomic, strong) UIColor *normalColor;
-@property (assign, nonatomic) NSUInteger selected;
 
-- (void) addTabItem;
+
+- (void) addTabItemWithCompletition:(void (^)(QMBTab *tabItem))completition;
+- (void) selectTab:(QMBTab *)tab;
+
+- (NSUInteger) indexForTabItem:(QMBTab *)tabItem;
+- (QMBTab *) tabItemForIndex:(int)index;
 
 @end
