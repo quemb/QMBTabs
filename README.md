@@ -1,7 +1,7 @@
 QMBTabs
 =======
 
-Version: 0.0.1 - alpha
+Version: 0.0.2 - alpha
 
 Tab View Controller just like Safari or mobile Chrome
 
