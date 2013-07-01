@@ -38,7 +38,7 @@ static UIColor *randomColor() {
 	
     self.delegate = self;
     
-    for (int i = 0; i<4; i++) {
+    for (int i = 0; i<20; i++) {
         UIViewController *viewController = [[UIViewController alloc] init];
         [viewController.view setBackgroundColor:randomColor()];
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 5, 300, 50)];

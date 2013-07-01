@@ -125,6 +125,11 @@
     
 }
 
+- (void)tabBar:(QMBTabBar *)tabBar didRemoveTabItem:(QMBTab *)tab
+{
+    // Nothing to do so far
+}
+
 - (NSUInteger)indexForViewController:(UIViewController *)viewcontroller
 {
     int i = 0;

@@ -18,7 +18,7 @@
 @end
 
 
-static float kMaxTabWidth = 150.0f;
+static float kMaxTabWidth = 320.0f;
 static float kMinTabWidth = 90.0f;
 
 @implementation QMBTabBar
@@ -71,14 +71,11 @@ static float kMinTabWidth = 90.0f;
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseOut
                      animations:^{
-                         
                          [self rearrangeTabs];
-                         
                      }
                      completion:^(BOOL finished){
                          
                      }];
-    
 }
 
 - (void) rearrangeTabs
@@ -92,10 +89,11 @@ static float kMinTabWidth = 90.0f;
     }
     
     int i = 0;
+    float inset = 15.0;
     
     for (QMBTab *tab in _items) {
 
-        float newXPostion = i * (currentTabItemWidth - 15.0f);
+        float newXPostion = i * (currentTabItemWidth - inset);
         [tab setFrame:CGRectMake(newXPostion,
                                  tab.frame.origin.y,
                                  currentTabItemWidth,
@@ -111,7 +109,7 @@ static float kMinTabWidth = 90.0f;
     }
     
     
-    [self setContentSize:CGSizeMake(i * currentTabItemWidth, self.frame.size.height)];
+    [self setContentSize:CGSizeMake(i * currentTabItemWidth - i*inset, self.frame.size.height)];
     [self bringSubviewToFront:_highlightBar];
     
 }
@@ -138,10 +136,12 @@ static float kMinTabWidth = 90.0f;
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     //Stacking
-    /*
+
     if (self.contentOffset.x > 0){
         
     }
+    
+    NSLog(@"%f",self.contentOffset.x);
     
     for (QMBTab *tab in _items) {
 
@@ -149,11 +149,11 @@ static float kMinTabWidth = 90.0f;
             CGRect frame = tab.frame;
             frame.origin.x = self.contentOffset.x;
             tab.frame = frame;
-        }else if (self.contentOffset.x + tab.orgFrame.origin.x + tab.orgFrame.size.width > self.frame.size.width){
+        }else if (tab.orgFrame.origin.x + tab.orgFrame.size.width > self.frame.size.width + self.contentOffset.x){
             CGRect frame = tab.frame;
-            frame.origin.x = tab.orgFrame.origin.x - (self.contentSize.width - self.frame.size.width) + self.contentOffset.x;
+            frame.origin.x = self.frame.size.width - tab.frame.size.width + self.contentOffset.x;
             tab.frame = frame;
-        }else if (tab.frame.origin.x != tab.orgFrame.origin.x){
+        }else{
             CGRect frame = tab.frame;
             frame.origin.x = tab.orgFrame.origin.x;
             tab.frame = frame;
@@ -163,7 +163,7 @@ static float kMinTabWidth = 90.0f;
         
         
     }
-     */
+
     
 }
 
@@ -178,16 +178,20 @@ static float kMinTabWidth = 90.0f;
     
     int i =0;
     
+    
     for (QMBTab *tabItem in _items) {
         if (tab == tabItem){
             [tabItem setHighlighted:true];
-            [self bringSubviewToFront:_highlightBar];
-            [self bringSubviewToFront:tabItem];
+           
         }else {
             [tabItem setHighlighted:false];
+            [self bringSubviewToFront:tabItem];
         }
         i++;
     }
+    
+    [self bringSubviewToFront:_highlightBar];
+    [self bringSubviewToFront:tab];
     
 }
 
