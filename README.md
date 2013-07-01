@@ -19,6 +19,7 @@ Tab View Controller just like Safari or mobile Chrome
 - Complete Stacking like mobile Chrome (Problems with right stack)
 - Sorting (Tap & Hold)
 - Apperance Class
+- Cocoa Pod Contribution
 
 ## Other good implementations:
 * [SGTabs by Simon Grätzer](https://github.com/graetzer/SGTabs, "SGTabs by Simon Grätzer")
