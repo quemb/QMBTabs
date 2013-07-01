@@ -14,9 +14,10 @@ Tab View Controller just like Safari or mobile Chrome
 - Tabs are scrolling currently, but will stack on the edge in future version
 - Many delegation methods
 - works in iPhone, iPad (Landscape and portait)
+- Tab Stacking on edges like mobile Chrome
 
 ## To Do:
-- Complete Stacking like mobile Chrome (Problems with right stack)
+- Stacking or Scroll - Option (Stacking only at the moment)
 - Sorting (Tap & Hold)
 - Apperance Class
 - Cocoa Pod Contribution
