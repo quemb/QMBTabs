@@ -174,9 +174,10 @@ static float highlightBarHeight = 5.0f;
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, rect.size.height-5.0f, rect.size.width, 5.0f)];
     [view setBackgroundColor:self.appearance.tabBarHighlightColor];
     _highlightBar = view;
+    [_highlightBar setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
     [self addSubview:_highlightBar];
     
-    [self rearrangeTabs];
+    //[self rearrangeTabs];
     
     [self bringSubviewToFront:_highlightBar];
 }
@@ -184,6 +185,7 @@ static float highlightBarHeight = 5.0f;
 - (void)layoutSubviews{
     [super layoutSubviews];
     
+    [self rearrangeTabs];
     
     // Highlight Bar should stack and not scroll
     [_highlightBar setFrame:CGRectMake(self.contentOffset.x, _highlightBar.frame.origin.y, _highlightBar.frame.size.width, _highlightBar.frame.size.height)];

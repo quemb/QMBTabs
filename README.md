@@ -19,7 +19,6 @@ Tab View Controller just like Safari or mobile Chrome
 ## To Do:
 - Stacking or Scroll - Option (Stacking only at the moment)
 - Sorting (Tap & Hold)
-- Apperance Class
 - Cocoa Pod Contribution
 
 ## Other good implementations:

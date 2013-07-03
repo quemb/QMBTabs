@@ -34,5 +34,6 @@
 
 - (NSUInteger) indexForTabItem:(QMBTab *)tabItem;
 - (QMBTab *) tabItemForIndex:(int)index;
+- (void) rearrangeTabs;
 
 @end
