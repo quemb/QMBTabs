@@ -46,6 +46,7 @@ const CGFloat kLTTabCurvature = 10.0f;
             UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 2.0f, self.frame.size.width-(2*20.0f), self.frame.size.height)];
             [titleLabel setText:NSLocalizedString(@"New tab ist what it is", nil)];
             [titleLabel setBackgroundColor:[UIColor clearColor]];
+            [titleLabel setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
             [self addSubview:titleLabel];
             self.titleLabel = titleLabel;
         }

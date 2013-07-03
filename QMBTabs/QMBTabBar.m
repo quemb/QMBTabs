@@ -10,7 +10,7 @@
 
 @interface QMBTabBar (){
     int _activeTabIndex;
-    float firstX, firstY, prevX;
+    float firstX, firstY, prevX, currentTabItemWidth;
 }
 
 @property (nonatomic, strong) UIView *highlightBar;
@@ -19,7 +19,7 @@
 
 
 static float kMaxTabWidth = 320.0f;
-static float kMinTabWidth = 90.0f;
+static float kMinTabWidth = 150.0f;
 static float highlightBarHeight = 5.0f;
 
 @implementation QMBTabBar
@@ -33,7 +33,7 @@ static float highlightBarHeight = 5.0f;
         _items = [NSMutableArray array];
         _activeTabIndex = 0;
         
-        
+        currentTabItemWidth = kMaxTabWidth;
         
         [self setShowsHorizontalScrollIndicator:NO];
         [self setShowsVerticalScrollIndicator:NO];
@@ -51,7 +51,7 @@ static float highlightBarHeight = 5.0f;
 {
     
    
-    QMBTab *tabItem = [[QMBTab alloc] initWithFrame:CGRectMake(0, 0, 0, self.frame.size.height-highlightBarHeight)];
+    QMBTab *tabItem = [[QMBTab alloc] initWithFrame:CGRectMake([_items count] * currentTabItemWidth, 0, 0, self.frame.size.height-highlightBarHeight)];
     [tabItem setAppearance:self.appearance];
     tabItem.titleLabel.text = NSLocalizedString(@"New tab", @"QMBTabBar New Tab Title");
     [tabItem setDelegate:self];
@@ -77,9 +77,9 @@ static float highlightBarHeight = 5.0f;
 
 - (void) rearrangeTabs
 {
-    NSLog(@"breite %f",self.frame.size.width);
     
-    float currentTabItemWidth = kMaxTabWidth;
+    currentTabItemWidth = kMaxTabWidth;
+    
     int i = 0;
     float inset = 15.0;
     
