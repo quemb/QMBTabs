@@ -17,9 +17,45 @@
 
 @implementation QMBTabViewController
 
+- (id) init
+{
+    self = [super init];
+    
+    if (self){
+
+        [self setup];
+        
+    }
+    
+    return self;
+}
+
 - (void)awakeFromNib
 {
+    [self setup];
+}
+
+- (void) setup
+{
+    QMBTabsAppearance *appearance;
+    if ([self.delegate respondsToSelector:@selector(tabViewControllerNeedsAppearance:)]){
+        appearance = [self.delegate performSelector:@selector(tabViewControllerNeedsAppearance:) withObject:self];
+    }else {
+        appearance = [self getDefaultAppearance];
+    }
+    self.appearance = appearance;
     
+    QMBTabBar *tabBar = [[QMBTabBar alloc] init];
+    tabBar.tabBarDelegeate = self;
+    tabBar.appearance = self.appearance;
+    [tabBar setBackgroundColor:self.appearance.tabBarBackgroundColor];
+    [tabBar setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
+    _tabBar = tabBar;
+}
+
+- (QMBTabsAppearance *)getDefaultAppearance
+{
+    return [[QMBTabsAppearance alloc] init];
 }
 
 - (void)viewDidLoad
@@ -33,21 +69,16 @@
         width = self.view.bounds.size.height;
         height = self.view.bounds.size.width;
     }
-    QMBTabBar *tabBar = [[QMBTabBar alloc] initWithFrame:CGRectMake(0, 0,width, 45.0f)];
-    tabBar.tabBarDelegeate = self;
-    [tabBar setBackgroundColor:[UIColor clearColor]];
-    [tabBar setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
     
-    [self.view addSubview:tabBar];
+    [_tabBar setFrame:CGRectMake(0, 0,width, 44.0f)];
+    [self.view addSubview:_tabBar];
     
-    _tabBar = tabBar;
-    
-    UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, tabBar.frame.size.height, width, height-tabBar.frame.size.height)];
+    UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, _tabBar.frame.size.height, width, height-_tabBar.frame.size.height)];
     [contentView setClipsToBounds:YES];
     [contentView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
     [self.view addSubview:contentView];
     _contentView = contentView;
-    
+
 }
 
 

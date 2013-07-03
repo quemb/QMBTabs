@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "QMBTab.h"
+#import "QMBTabsAppearance.h"
 
 @class QMBTabBar;
 
@@ -26,7 +27,7 @@
 @property (nonatomic, strong, readonly) NSMutableArray *items;
 @property (nonatomic, strong) UIColor *highlightColor;
 @property (nonatomic, strong) UIColor *normalColor;
-
+@property (nonatomic, strong) QMBTabsAppearance *appearance;
 
 - (void) addTabItemWithCompletition:(void (^)(QMBTab *tabItem))completition;
 - (void) selectTab:(QMBTab *)tab;

@@ -8,12 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-FOUNDATION_EXPORT const CGFloat kLTTabViewWidth;
-FOUNDATION_EXPORT const CGFloat kLTTabViewHeight;
-FOUNDATION_EXPORT const CGFloat kLTTabOuterHeight;
-FOUNDATION_EXPORT const CGFloat kLTTabInnerHeight;
-FOUNDATION_EXPORT const CGFloat kLTTabLineHeight;
-FOUNDATION_EXPORT const CGFloat kLTTabCurvature;
+#import "QMBTabsAppearance.h"
 
 @class QMBTab;
 
@@ -39,6 +34,8 @@ FOUNDATION_EXPORT const CGFloat kLTTabCurvature;
 
 @property (nonatomic, strong) UIColor *highlightColor;
 @property (nonatomic, strong) UIColor *normalColor;
+
+@property (nonatomic, strong) QMBTabsAppearance *appearance;
 
 - (void) setHighlighted:(BOOL)highlighted;
 

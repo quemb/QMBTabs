@@ -9,12 +9,15 @@
 #import <UIKit/UIKit.h>
 
 #import "QMBTabBar.h"
+#import "QMBTabsAppearance.h"
 
 @class QMBTabViewController;
 
 @protocol QMBTabViewControllerDelegate <NSObject>
 
+
 @optional
+- (QMBTabsAppearance *) tabViewControllerNeedsAppearance:(QMBTabViewController *)tabViewController;
 // Controller's title will be shown in tabs by default. Use this method to set the title on your own.
 - (NSString *) tabViewController:(QMBTabViewController *)tabViewController titleForTabAtIndex:(NSUInteger)index;
 
@@ -34,16 +37,19 @@
 
 @property(nonatomic,strong, readonly) NSMutableArray *viewControllers;
 
+@property (nonatomic, strong) QMBTabsAppearance *appearance;
 
 @property(nonatomic,assign) UIViewController *selectedViewController;
 
-@property(nonatomic,readonly) QMBTabBar *tabBar;
+@property(nonatomic,strong, readonly) QMBTabBar *tabBar;
 
 @property(nonatomic,assign) id<QMBTabViewControllerDelegate> delegate;
+
 
 - (void)addViewController:(UIViewController *)controller;
 - (void)selectViewController:(UIViewController *)controller;
 - (NSUInteger) indexForViewController:(UIViewController *)viewcontroller;
+- (QMBTabsAppearance *) getDefaultAppearance;
 
 @end
 

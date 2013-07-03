@@ -27,12 +27,10 @@ const CGFloat kLTTabCurvature = 10.0f;
 {
 	self = [super initWithFrame:frame];
 	if (self) {
-        self.normalColor = [UIColor colorWithWhite:0.8 alpha:1];
-        self.highlightColor = [UIColor colorWithWhite:0.7 alpha:1];
+        
         
         _orgFrame = frame;
-		_innerBackgroundColor = self.normalColor;
-		_foregroundColor = [UIColor darkGrayColor];
+		
         
         [self setClipsToBounds:NO];
         
@@ -55,12 +53,14 @@ const CGFloat kLTTabCurvature = 10.0f;
         if (!self.closeButton){
             UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
             [closeButton addTarget:self action:@selector(closeButtonTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
-            [closeButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
+            [closeButton setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin];
             [closeButton setFrame:CGRectMake(self.frame.size.width-30.0f, 12.0f, 15.0f, 15.0f)];
             [closeButton setHidden:YES];
             [self addSubview:closeButton];
             self.closeButton = closeButton;
         }
+        
+        
 	}
 	return self;
 }
@@ -85,6 +85,12 @@ const CGFloat kLTTabCurvature = 10.0f;
 
 - (void)drawRect:(CGRect)rect
 {
+    if (!self.normalColor){
+        self.normalColor = self.appearance.tabBackgroundColorEnabled;
+        self.highlightColor = self.appearance.tabBackgroundColorHighlighted;
+    }
+    
+    [self.closeButton setImage:self.appearance.tabCloseButtonImage forState:UIControlStateNormal];
 
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	UIColor *color;
@@ -105,12 +111,12 @@ const CGFloat kLTTabCurvature = 10.0f;
 	CGPathMoveToPoint(path, NULL, point.x, point.y);
     
     CGPathAddLineToPoint(path, NULL, 5.0f, startY);
-    CGPathAddLineToPoint(path, NULL, 15.0f, 10.0f);
-    CGPathAddLineToPoint(path, NULL, self.frame.size.width-15.0f, 10.0f);
+    CGPathAddLineToPoint(path, NULL, 15.0f, 5.0f);
+    CGPathAddLineToPoint(path, NULL, self.frame.size.width-15.0f, 5.0f);
     CGPathAddLineToPoint(path, NULL, self.frame.size.width-5.0f, startY);
     
 	CGPathCloseSubpath(path);
-	[[self innerBackgroundColor] setFill];
+	[_innerBackgroundColor setFill];
 	CGContextAddPath(context, path);
 	CGContextFillPath(context);
 	CGPathRelease(path);
@@ -123,6 +129,8 @@ const CGFloat kLTTabCurvature = 10.0f;
     
     
     [self.closeButton setHidden:!_highlighted];
+    
+    [self setBackgroundColor:[UIColor clearColor]];
 }
 
 - (void)layoutSubviews{
@@ -132,9 +140,9 @@ const CGFloat kLTTabCurvature = 10.0f;
 - (void) setHighlighted:(BOOL)highlighted
 {
     if (highlighted){
-        [self setInnerBackgroundColor:self.highlightColor];
+        [self setInnerBackgroundColor:self.appearance.tabBackgroundColorHighlighted];
     }else {
-        [self setInnerBackgroundColor:self.normalColor];
+        [self setInnerBackgroundColor:self.appearance.tabBackgroundColorEnabled];
     }
     
     _highlighted = highlighted;

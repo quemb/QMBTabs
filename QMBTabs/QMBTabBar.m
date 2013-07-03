@@ -20,6 +20,7 @@
 
 static float kMaxTabWidth = 320.0f;
 static float kMinTabWidth = 90.0f;
+static float highlightBarHeight = 5.0f;
 
 @implementation QMBTabBar
 
@@ -32,38 +33,33 @@ static float kMinTabWidth = 90.0f;
         _items = [NSMutableArray array];
         _activeTabIndex = 0;
         
-        self.normalColor = [UIColor colorWithWhite:0.8 alpha:1];
-        self.highlightColor = [UIColor colorWithWhite:0.7 alpha:1];
+        
         
         [self setShowsHorizontalScrollIndicator:NO];
         [self setShowsVerticalScrollIndicator:NO];
         [self setAlwaysBounceHorizontal:YES];
         
-        if (!_highlightBar){
-            _highlightBar = [[UIView alloc] initWithFrame:CGRectMake(0, self.frame.size.height-5.0f, self.frame.size.width, 5.0f)];
-            [_highlightBar setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
-        }
         
-        [_highlightBar setBackgroundColor:self.highlightColor];
-        [self addSubview:_highlightBar];
-        
-        [self bringSubviewToFront:_highlightBar];
     }
     return self;
 }
 
 
+
+
 - (void) addTabItemWithCompletition:(void (^)(QMBTab *tabItem))completition
 {
     
-    
-    QMBTab *tabItem = [[QMBTab alloc] initWithFrame:CGRectMake(0, 0, 0, self.frame.size.height-_highlightBar.frame.size.height)];
+   
+    QMBTab *tabItem = [[QMBTab alloc] initWithFrame:CGRectMake(0, 0, 0, self.frame.size.height-highlightBarHeight)];
+    [tabItem setAppearance:self.appearance];
     tabItem.titleLabel.text = NSLocalizedString(@"New tab", @"QMBTabBar New Tab Title");
     [tabItem setDelegate:self];
     
     completition(tabItem);
     
     [_items addObject:tabItem];
+
     [self addSubview:tabItem];
     
     
@@ -76,6 +72,7 @@ static float kMinTabWidth = 90.0f;
                      completion:^(BOOL finished){
                          
                      }];
+
 }
 
 - (void) rearrangeTabs
@@ -165,7 +162,23 @@ static float kMinTabWidth = 90.0f;
 }
 
 - (void)drawRect:(CGRect)rect{
+    
+    [super drawRect:rect];
+    
+    [self setBackgroundColor:[UIColor redColor]];
+        
+    self.normalColor = self.appearance.tabBackgroundColorEnabled;
+    self.highlightColor = self.appearance.tabBackgroundColorHighlighted;
+    [_highlightBar setBackgroundColor:self.appearance.tabBarHighlightColor];
+    
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, rect.size.height-5.0f, rect.size.width, 5.0f)];
+    [view setBackgroundColor:self.appearance.tabBarHighlightColor];
+    _highlightBar = view;
+    [self addSubview:_highlightBar];
+    
     [self rearrangeTabs];
+    
+    [self bringSubviewToFront:_highlightBar];
 }
 
 - (void)layoutSubviews{
@@ -174,6 +187,7 @@ static float kMinTabWidth = 90.0f;
     
     // Highlight Bar should stack and not scroll
     [_highlightBar setFrame:CGRectMake(self.contentOffset.x, _highlightBar.frame.origin.y, _highlightBar.frame.size.width, _highlightBar.frame.size.height)];
+   
 }
 
 - (void) selectTab:(QMBTab *)tab{
