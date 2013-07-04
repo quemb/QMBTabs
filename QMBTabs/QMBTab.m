@@ -47,6 +47,7 @@ const CGFloat kLTTabCurvature = 10.0f;
             [titleLabel setText:NSLocalizedString(@"New tab ist what it is", nil)];
             [titleLabel setBackgroundColor:[UIColor clearColor]];
             [titleLabel setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
+            [titleLabel setFont:self.appearance.tabLabelFont];
             [self addSubview:titleLabel];
             self.titleLabel = titleLabel;
         }
@@ -143,8 +144,10 @@ const CGFloat kLTTabCurvature = 10.0f;
 {
     if (highlighted){
         [self setInnerBackgroundColor:self.appearance.tabBackgroundColorHighlighted];
+        [self.titleLabel setTextColor:self.appearance.tabLabelColorHighlighted];
     }else {
         [self setInnerBackgroundColor:self.appearance.tabBackgroundColorEnabled];
+        [self.titleLabel setTextColor:self.appearance.tabLabelColorEnabled];
     }
     
     _highlighted = highlighted;
