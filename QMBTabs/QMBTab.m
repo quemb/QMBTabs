@@ -94,7 +94,6 @@ const CGFloat kLTTabCurvature = 10.0f;
     [self.closeButton setImage:self.appearance.tabCloseButtonImage forState:UIControlStateNormal];
 
 	CGContextRef context = UIGraphicsGetCurrentContext();
-	UIColor *color;
 	CGMutablePathRef path;
 	CGPoint point;
     CGFloat startY = self.frame.size.height;
@@ -102,9 +101,11 @@ const CGFloat kLTTabCurvature = 10.0f;
 	CGContextSaveGState(context);
     
     // Shadow
-	color = [UIColor colorWithWhite:0.2f alpha:0.4f];
-    CGContextSaveGState(context);
-    CGContextSetShadowWithColor(context, CGSizeMake(0.0f, 0.5f), 7.0f, [color CGColor]);
+	CGContextSaveGState(context);
+    CGContextSetShadowWithColor(context,
+                                CGSizeMake(self.appearance.tabShadowWidthOffset, self.appearance.tabShadowHeightOffset),
+                                self.appearance.tabShadowBlur,
+                                [self.appearance.tabShadowColor CGColor]);
 	CGContextBeginTransparencyLayer(context, NULL);
     
 	path = CGPathCreateMutable();

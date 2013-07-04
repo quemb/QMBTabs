@@ -25,6 +25,11 @@
 
 @property (nonatomic,strong) UIImage *tabCloseButtonImage;
 
+@property (nonatomic) CGFloat tabShadowWidthOffset;
+@property (nonatomic) CGFloat tabShadowHeightOffset;
+@property (nonatomic) CGFloat tabShadowBlur;
+@property (nonatomic,strong) UIColor *tabShadowColor;
+
 @property (nonatomic,strong) UIColor *tabStrokeColorEnabled;
 @property (nonatomic,strong) UIColor *tabStrokeColorDisabled;
 @property (nonatomic,strong) UIColor *tabStrokeColorHighlighted; // = tabBarStrokeHighlightColor
