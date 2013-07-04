@@ -44,7 +44,8 @@ static UIColor *randomColor() {
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
         [label setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight ];
         [label setTextAlignment:NSTextAlignmentCenter];
-        [label setFont:[UIFont systemFontOfSize:600.0f]];
+        [label setFont:[UIFont systemFontOfSize:500.0f]];
+        [label setAdjustsFontSizeToFitWidth:YES];
         [label setTextColor:[UIColor colorWithWhite:1.0f alpha:0.5f]];
         [label setBackgroundColor:[UIColor clearColor]];
         [label setText:[NSString stringWithFormat:@"%d",i]];
