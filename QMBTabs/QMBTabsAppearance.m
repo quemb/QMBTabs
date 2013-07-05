@@ -22,9 +22,11 @@
 - (void)setDefaults {
     _tabLabelColorDisabled = [UIColor lightGrayColor];
     _tabLabelColorEnabled = [UIColor darkGrayColor];
-    _tabLabelColorHighlighted = [UIColor blackColor];
+    _tabLabelColorHighlighted = [UIColor whiteColor];
     
-    _tabLabelFont = [UIFont systemFontOfSize:16.0f];
+    _tabLabelFontDisabled = [UIFont systemFontOfSize:10.0f];
+    _tabLabelFontEnabled = [UIFont systemFontOfSize:10.0f];
+    _tabLabelFontHighlighted = [UIFont systemFontOfSize:14.0f];
     
     _tabLabelAlignment = NSTextAlignmentCenter;
     

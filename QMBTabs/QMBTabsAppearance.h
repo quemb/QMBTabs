@@ -15,7 +15,9 @@
 @property (nonatomic,strong) UIColor *tabLabelColorEnabled;
 @property (nonatomic,strong) UIColor *tabLabelColorHighlighted;
 
-@property (nonatomic,strong) UIFont *tabLabelFont;
+@property (nonatomic,strong) UIFont *tabLabelFontDisabled;
+@property (nonatomic,strong) UIFont *tabLabelFontEnabled;
+@property (nonatomic,strong) UIFont *tabLabelFontHighlighted;
 
 @property (nonatomic) NSTextAlignment tabLabelAlignment;
 
