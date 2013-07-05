@@ -8,18 +8,16 @@
 
 #import "QMBTab.h"
 
-const CGFloat kLTTabViewWidth = 60.0f;
-const CGFloat kLTTabViewHeight = 2048.0f;
-const CGFloat kLTTabInnerHeight = 80.0f;
-const CGFloat kLTTabOuterHeight = 130.0f;
-const CGFloat kLTTabLineHeight = 20.0f;
-const CGFloat kLTTabCurvature = 10.0f;
-
-
 @interface QMBTab ()
 
 
 @end
+
+static float qmbTabSideOffset = 5.0f;
+static float qmbTabTopOffset = 5.0f;
+static float qmbTabBevelWidth = 10.0f;
+static float qmbTabRadius = 5.0f;
+static float pi = 3.14159265358979323846264338327950288f;
 
 @implementation QMBTab
 
@@ -112,11 +110,20 @@ const CGFloat kLTTabCurvature = 10.0f;
 	point = CGPointMake(0.0f, startY);
 	CGPathMoveToPoint(path, NULL, point.x, point.y);
     
-    CGPathAddLineToPoint(path, NULL, 5.0f, startY);
-    CGPathAddLineToPoint(path, NULL, 15.0f, 5.0f);
-    CGPathAddLineToPoint(path, NULL, self.frame.size.width-15.0f, 5.0f);
-    CGPathAddLineToPoint(path, NULL, self.frame.size.width-5.0f, startY);
+    CGPathAddLineToPoint(path, NULL, qmbTabSideOffset, startY);
+    CGPathAddLineToPoint(path, NULL, qmbTabBevelWidth + qmbTabSideOffset, qmbTabTopOffset);
+    CGPathAddLineToPoint(path, NULL, self.frame.size.width - qmbTabBevelWidth - qmbTabSideOffset, qmbTabTopOffset);
+    CGPathAddLineToPoint(path, NULL, self.frame.size.width - qmbTabSideOffset, startY);
     
+    /* Radius development
+    CGPathAddArc(path, NULL, qmbTabSideOffset - qmbTabRadius, startY - qmbTabRadius, qmbTabRadius, pi / 2, 0, true);
+    // CGPathAddLineToPoint(path, NULL, qmbTabSideOffset, startY);
+    CGPathAddLineToPoint(path, NULL, qmbTabBevelWidth + qmbTabSideOffset - qmbTabRadius, qmbTabTopOffset - qmbTabRadius);
+    // CGPathAddArc(path, NULL, qmbTabBevelWidth + qmbTabSideOffset, qmbTabTopOffset - qmbTabRadius, qmbTabRadius, pi, pi / 2, true);
+    CGPathAddLineToPoint(path, NULL, self.frame.size.width - qmbTabBevelWidth, qmbTabTopOffset);
+    CGPathAddLineToPoint(path, NULL, self.frame.size.width - qmbTabSideOffset, startY);
+    */
+     
 	CGPathCloseSubpath(path);
 	[_innerBackgroundColor setFill];
 	CGContextAddPath(context, path);
@@ -127,7 +134,10 @@ const CGFloat kLTTabCurvature = 10.0f;
 	CGContextRestoreGState(context);
     
     [self.titleLabel setFrame:CGRectMake(20.0f, 2.0f, self.frame.size.width-(2*20.0f), self.frame.size.height)];
-    [self.closeButton setFrame:CGRectMake(self.frame.size.width-30.0f, 12.0f, 15.0f, 15.0f)];
+    [self.closeButton setFrame:CGRectMake(self.frame.size.width - qmbTabBevelWidth - (1.5 * (self.appearance.tabCloseButtonImage).size.width),
+                                          (self.frame.size.height - (self.appearance.tabCloseButtonImage).size.height) / 2,
+                                          (self.appearance.tabCloseButtonImage).size.width,
+                                          (self.appearance.tabCloseButtonImage).size.height)];
     
     [self.titleLabel setFont:(_highlighted ? self.appearance.tabLabelFontHighlighted : self.appearance.tabLabelFontEnabled)];
     [self.titleLabel setTextColor:(_highlighted ? self.appearance.tabLabelColorHighlighted : self.appearance.tabLabelColorEnabled)];

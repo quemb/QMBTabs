@@ -38,7 +38,7 @@
     
     _tabShadowWidthOffset = 0.0f;
     _tabShadowHeightOffset = 0.5f;
-    _tabShadowBlur = 4.0f;
+    _tabShadowBlur = 0.0f;
     _tabShadowColor = [UIColor colorWithWhite:0.2f alpha:0.4f];
     
     _tabStrokeColorEnabled = [UIColor colorWithWhite:0.5f alpha:1.0f];
