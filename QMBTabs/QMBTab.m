@@ -8,14 +8,6 @@
 
 #import "QMBTab.h"
 
-const CGFloat kLTTabViewWidth = 60.0f;
-const CGFloat kLTTabViewHeight = 2048.0f;
-const CGFloat kLTTabInnerHeight = 80.0f;
-const CGFloat kLTTabOuterHeight = 130.0f;
-const CGFloat kLTTabLineHeight = 20.0f;
-const CGFloat kLTTabCurvature = 10.0f;
-
-
 @interface QMBTab ()
 
 
@@ -92,10 +84,19 @@ const CGFloat kLTTabCurvature = 10.0f;
     }
     
     [self.closeButton setImage:self.appearance.tabCloseButtonImage forState:UIControlStateNormal];
+    [self.closeButton setImage:self.appearance.tabCloseButtonHighlightedImage forState:UIControlStateHighlighted];
 
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	CGMutablePathRef path;
 	CGPoint point;
+    
+    CGFloat qmbTabSideOffset = self.appearance.tabSideOffset;
+    CGFloat qmbTabTopOffset = self.appearance.tabTopOffset;
+    CGFloat qmbTabCurvature = self.appearance.tabCurvature;
+    
+    CGFloat qmbTabWidth = self.frame.size.width;
+    CGFloat qmbTabHeight = self.frame.size.height - qmbTabTopOffset;;
+    
     CGFloat startY = self.frame.size.height;
 
 	CGContextSaveGState(context);
@@ -111,11 +112,30 @@ const CGFloat kLTTabCurvature = 10.0f;
 	path = CGPathCreateMutable();
 	point = CGPointMake(0.0f, startY);
 	CGPathMoveToPoint(path, NULL, point.x, point.y);
+
+
+    // offset left
+    CGPathAddLineToPoint(path, NULL, qmbTabSideOffset, startY);
     
-    CGPathAddLineToPoint(path, NULL, 5.0f, startY);
-    CGPathAddLineToPoint(path, NULL, 15.0f, 5.0f);
-    CGPathAddLineToPoint(path, NULL, self.frame.size.width-15.0f, 5.0f);
-    CGPathAddLineToPoint(path, NULL, self.frame.size.width-5.0f, startY);
+    
+    // left curve
+    CGPathAddCurveToPoint(path, NULL,
+                          qmbTabSideOffset + qmbTabCurvature / 2, startY,
+                          qmbTabSideOffset + qmbTabCurvature / 2, startY - qmbTabHeight,
+                          qmbTabSideOffset + qmbTabCurvature, startY - qmbTabHeight);
+    
+    // top line
+    CGPathAddLineToPoint(path, NULL, qmbTabWidth - qmbTabSideOffset - qmbTabCurvature, startY - qmbTabHeight);
+    
+    // right curve
+    CGPathAddCurveToPoint(path, NULL,
+                          qmbTabWidth - qmbTabSideOffset - qmbTabCurvature / 2, startY - qmbTabHeight,
+                          qmbTabWidth - qmbTabSideOffset - qmbTabCurvature / 2, startY,
+                          qmbTabWidth - qmbTabSideOffset, startY);
+    
+    // offset right
+    CGPathAddLineToPoint(path, NULL, qmbTabWidth, startY);
+    
     
 	CGPathCloseSubpath(path);
 	[_innerBackgroundColor setFill];
@@ -126,8 +146,13 @@ const CGFloat kLTTabCurvature = 10.0f;
 	CGContextEndTransparencyLayer(context);
 	CGContextRestoreGState(context);
     
-    [self.titleLabel setFrame:CGRectMake(20.0f, 2.0f, self.frame.size.width-(2*20.0f), self.frame.size.height)];
-    [self.closeButton setFrame:CGRectMake(self.frame.size.width-30.0f, 12.0f, 15.0f, 15.0f)];
+    
+    [self.titleLabel setFrame:CGRectMake(qmbTabSideOffset + qmbTabCurvature, 2.0f,
+                                         qmbTabWidth - qmbTabSideOffset - qmbTabCurvature - (self.appearance.tabCloseButtonImage).size.width, self.frame.size.height)];
+    
+    [self.closeButton setFrame:CGRectMake(qmbTabWidth - qmbTabSideOffset - qmbTabCurvature - (self.appearance.tabCloseButtonImage).size.width,
+                                          (qmbTabHeight - (self.appearance.tabCloseButtonImage).size.height) / 2 + qmbTabTopOffset,
+                                          (self.appearance.tabCloseButtonImage).size.width, (self.appearance.tabCloseButtonImage).size.height)];
     
     [self.titleLabel setFont:(_highlighted ? self.appearance.tabLabelFontHighlighted : self.appearance.tabLabelFontEnabled)];
     [self.titleLabel setTextColor:(_highlighted ? self.appearance.tabLabelColorHighlighted : self.appearance.tabLabelColorEnabled)];

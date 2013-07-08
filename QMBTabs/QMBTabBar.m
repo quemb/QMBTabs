@@ -18,8 +18,8 @@
 @end
 
 
-static float kMaxTabWidth = 320.0f;
-static float kMinTabWidth = 150.0f;
+static float qmbMaxTabWidth = 320.0f;
+static float qmbMinTabWidth = 150.0f;
 static float highlightBarHeight = 5.0f;
 
 @implementation QMBTabBar
@@ -33,7 +33,7 @@ static float highlightBarHeight = 5.0f;
         _items = [NSMutableArray array];
         _activeTabIndex = 0;
         
-        currentTabItemWidth = kMaxTabWidth;
+        currentTabItemWidth = qmbMaxTabWidth;
         
         [self setShowsHorizontalScrollIndicator:NO];
         [self setShowsVerticalScrollIndicator:NO];
@@ -78,15 +78,15 @@ static float highlightBarHeight = 5.0f;
 - (void) rearrangeTabs
 {
     
-    currentTabItemWidth = kMaxTabWidth;
+    currentTabItemWidth = qmbMaxTabWidth;
     
     int i = 0;
     float inset = 15.0;
     
     if (((currentTabItemWidth * [_items count]) - (inset * [_items count])) > self.frame.size.width){
         currentTabItemWidth = self.frame.size.width  / ([_items count]);
-        if (currentTabItemWidth < kMinTabWidth){
-            currentTabItemWidth = kMinTabWidth;
+        if (currentTabItemWidth < qmbMinTabWidth){
+            currentTabItemWidth = qmbMinTabWidth;
         }
     }
     

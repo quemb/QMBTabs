@@ -35,11 +35,16 @@
     _tabBackgroundColorDisabled = [UIColor colorWithWhite:0.8f alpha:0.7f];
     
     _tabCloseButtonImage = [UIImage imageNamed:@"QMBTabViewCloseButton"];
+    _tabCloseButtonHighlightedImage = [UIImage imageNamed:@"QMBTabViewCloseButtonHighlighted"];
     
     _tabShadowWidthOffset = 0.0f;
-    _tabShadowHeightOffset = 0.5f;
-    _tabShadowBlur = 4.0f;
-    _tabShadowColor = [UIColor colorWithWhite:0.2f alpha:0.4f];
+    _tabShadowHeightOffset = 0.0f;
+    _tabShadowBlur = 3.0f;
+    _tabShadowColor = [UIColor colorWithWhite:0.2f alpha:0.3f];
+    
+    _tabSideOffset = 0.0f;
+    _tabTopOffset = 5.0f;
+    _tabCurvature = 30.0f;
     
     _tabStrokeColorEnabled = [UIColor colorWithWhite:0.5f alpha:1.0f];
     _tabStrokeColorDisabled = [UIColor colorWithWhite:0.3f alpha:1.0f];
