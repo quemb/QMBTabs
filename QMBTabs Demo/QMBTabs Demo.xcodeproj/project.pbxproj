@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		89851C0017846F94007310F9 /* QMBTabViewCloseButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89851BFF17846F94007310F9 /* QMBTabViewCloseButton@2x.png */; };
 		89851C0317846F9E007310F9 /* QMBTabsAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 89851C0217846F9E007310F9 /* QMBTabsAppearance.m */; };
+		D056D7CE178ADFC5005A082F /* QMBTabViewCloseButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D056D7CD178ADFC5005A082F /* QMBTabViewCloseButtonHighlighted@2x.png */; };
 		E24EDB4C177F09EC00673520 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E24EDB4B177F09EC00673520 /* UIKit.framework */; };
 		E24EDB4E177F09EC00673520 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E24EDB4D177F09EC00673520 /* Foundation.framework */; };
 		E24EDB50177F09EC00673520 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E24EDB4F177F09EC00673520 /* CoreGraphics.framework */; };
@@ -45,6 +46,7 @@
 		89851BFF17846F94007310F9 /* QMBTabViewCloseButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QMBTabViewCloseButton@2x.png"; sourceTree = "<group>"; };
 		89851C0117846F9E007310F9 /* QMBTabsAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMBTabsAppearance.h; sourceTree = "<group>"; };
 		89851C0217846F9E007310F9 /* QMBTabsAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMBTabsAppearance.m; sourceTree = "<group>"; };
+		D056D7CD178ADFC5005A082F /* QMBTabViewCloseButtonHighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QMBTabViewCloseButtonHighlighted@2x.png"; sourceTree = "<group>"; };
 		E24EDB48177F09EC00673520 /* QMBTabs Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "QMBTabs Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E24EDB4B177F09EC00673520 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E24EDB4D177F09EC00673520 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -104,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				89851BFF17846F94007310F9 /* QMBTabViewCloseButton@2x.png */,
+				D056D7CD178ADFC5005A082F /* QMBTabViewCloseButtonHighlighted@2x.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				E24EDB65177F09EC00673520 /* MainStoryboard_iPhone.storyboard in Resources */,
 				E24EDB68177F09EC00673520 /* MainStoryboard_iPad.storyboard in Resources */,
 				89851C0017846F94007310F9 /* QMBTabViewCloseButton@2x.png in Resources */,
+				D056D7CE178ADFC5005A082F /* QMBTabViewCloseButtonHighlighted@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

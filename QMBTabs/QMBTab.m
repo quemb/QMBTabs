@@ -13,12 +13,6 @@
 
 @end
 
-static float qmbTabSideOffset = 5.0f;
-static float qmbTabTopOffset = 5.0f;
-static float qmbTabBevelWidth = 10.0f;
-static float qmbTabRadius = 5.0f;
-static float pi = 3.14159265358979323846264338327950288f;
-
 @implementation QMBTab
 
 - (id)initWithFrame:(CGRect)frame
@@ -90,10 +84,19 @@ static float pi = 3.14159265358979323846264338327950288f;
     }
     
     [self.closeButton setImage:self.appearance.tabCloseButtonImage forState:UIControlStateNormal];
+    [self.closeButton setImage:self.appearance.tabCloseButtonHighlightedImage forState:UIControlStateHighlighted];
 
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	CGMutablePathRef path;
 	CGPoint point;
+    
+    CGFloat qmbTabSideOffset = self.appearance.tabSideOffset;
+    CGFloat qmbTabTopOffset = self.appearance.tabTopOffset;
+    CGFloat qmbTabCurvature = self.appearance.tabCurvature;
+    
+    CGFloat qmbTabWidth = self.frame.size.width;
+    CGFloat qmbTabHeight = self.frame.size.height - qmbTabTopOffset;;
+    
     CGFloat startY = self.frame.size.height;
 
 	CGContextSaveGState(context);
@@ -109,21 +112,31 @@ static float pi = 3.14159265358979323846264338327950288f;
 	path = CGPathCreateMutable();
 	point = CGPointMake(0.0f, startY);
 	CGPathMoveToPoint(path, NULL, point.x, point.y);
-    
+
+
+    // offset left
     CGPathAddLineToPoint(path, NULL, qmbTabSideOffset, startY);
-    CGPathAddLineToPoint(path, NULL, qmbTabBevelWidth + qmbTabSideOffset, qmbTabTopOffset);
-    CGPathAddLineToPoint(path, NULL, self.frame.size.width - qmbTabBevelWidth - qmbTabSideOffset, qmbTabTopOffset);
-    CGPathAddLineToPoint(path, NULL, self.frame.size.width - qmbTabSideOffset, startY);
     
-    /* Radius development
-    CGPathAddArc(path, NULL, qmbTabSideOffset - qmbTabRadius, startY - qmbTabRadius, qmbTabRadius, pi / 2, 0, true);
-    // CGPathAddLineToPoint(path, NULL, qmbTabSideOffset, startY);
-    CGPathAddLineToPoint(path, NULL, qmbTabBevelWidth + qmbTabSideOffset - qmbTabRadius, qmbTabTopOffset - qmbTabRadius);
-    // CGPathAddArc(path, NULL, qmbTabBevelWidth + qmbTabSideOffset, qmbTabTopOffset - qmbTabRadius, qmbTabRadius, pi, pi / 2, true);
-    CGPathAddLineToPoint(path, NULL, self.frame.size.width - qmbTabBevelWidth, qmbTabTopOffset);
-    CGPathAddLineToPoint(path, NULL, self.frame.size.width - qmbTabSideOffset, startY);
-    */
-     
+    
+    // left curve
+    CGPathAddCurveToPoint(path, NULL,
+                          qmbTabSideOffset + qmbTabCurvature / 2, startY,
+                          qmbTabSideOffset + qmbTabCurvature / 2, startY - qmbTabHeight,
+                          qmbTabSideOffset + qmbTabCurvature, startY - qmbTabHeight);
+    
+    // top line
+    CGPathAddLineToPoint(path, NULL, qmbTabWidth - qmbTabSideOffset - qmbTabCurvature, startY - qmbTabHeight);
+    
+    // right curve
+    CGPathAddCurveToPoint(path, NULL,
+                          qmbTabWidth - qmbTabSideOffset - qmbTabCurvature / 2, startY - qmbTabHeight,
+                          qmbTabWidth - qmbTabSideOffset - qmbTabCurvature / 2, startY,
+                          qmbTabWidth - qmbTabSideOffset, startY);
+    
+    // offset right
+    CGPathAddLineToPoint(path, NULL, qmbTabWidth, startY);
+    
+    
 	CGPathCloseSubpath(path);
 	[_innerBackgroundColor setFill];
 	CGContextAddPath(context, path);
@@ -133,11 +146,13 @@ static float pi = 3.14159265358979323846264338327950288f;
 	CGContextEndTransparencyLayer(context);
 	CGContextRestoreGState(context);
     
-    [self.titleLabel setFrame:CGRectMake(20.0f, 2.0f, self.frame.size.width-(2*20.0f), self.frame.size.height)];
-    [self.closeButton setFrame:CGRectMake(self.frame.size.width - qmbTabBevelWidth - (1.5 * (self.appearance.tabCloseButtonImage).size.width),
-                                          (self.frame.size.height - (self.appearance.tabCloseButtonImage).size.height) / 2,
-                                          (self.appearance.tabCloseButtonImage).size.width,
-                                          (self.appearance.tabCloseButtonImage).size.height)];
+    
+    [self.titleLabel setFrame:CGRectMake(qmbTabSideOffset + qmbTabCurvature, 2.0f,
+                                         qmbTabWidth - qmbTabSideOffset - qmbTabCurvature - (self.appearance.tabCloseButtonImage).size.width, self.frame.size.height)];
+    
+    [self.closeButton setFrame:CGRectMake(qmbTabWidth - qmbTabSideOffset - qmbTabCurvature - (self.appearance.tabCloseButtonImage).size.width,
+                                          (qmbTabHeight - (self.appearance.tabCloseButtonImage).size.height) / 2 + qmbTabTopOffset,
+                                          (self.appearance.tabCloseButtonImage).size.width, (self.appearance.tabCloseButtonImage).size.height)];
     
     [self.titleLabel setFont:(_highlighted ? self.appearance.tabLabelFontHighlighted : self.appearance.tabLabelFontEnabled)];
     [self.titleLabel setTextColor:(_highlighted ? self.appearance.tabLabelColorHighlighted : self.appearance.tabLabelColorEnabled)];
