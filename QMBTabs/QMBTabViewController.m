@@ -81,8 +81,13 @@
 
 }
 
+- (void)addViewController:(UIViewController *)controller
+{
+    [self addViewController:controller withCompletion:nil];
+}
 
-- (void)addViewController:(UIViewController *)controller {
+
+- (void)addViewController:(UIViewController *)controller withCompletion:(void (^)(QMBTab *))completition {
     if ([_viewControllers containsObject:controller])
         return;
     
@@ -95,19 +100,8 @@
 
     [controller.view setNeedsLayout];
     controller.view.frame = CGRectMake(0,0,_contentView.frame.size.width, _contentView.frame.size.height);
-    
-    __block QMBTabViewController *self_ = self;
 
-    [_tabBar addTabItemWithCompletition:^(QMBTab *tabItem) {
-        
-        if ([self_.delegate respondsToSelector:@selector(tabViewController:titleForTabAtIndex:)]){
-            NSString *title = [self_.delegate performSelector:@selector(tabViewController:titleForTabAtIndex:) withObject:self_ withObject:[NSIndexPath indexPathWithIndex:[self_ indexForViewController:controller]]];
-            tabItem.titleLabel.text = title;
-        }else {
-            tabItem.titleLabel.text = controller.title;
-        }
-        
-    }];
+    [_tabBar addTabItemWithCompletition:completition];
     
     [self.contentView addSubview:controller.view];
     self.selectedViewController = controller;

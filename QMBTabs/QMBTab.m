@@ -19,8 +19,6 @@
 {
 	self = [super initWithFrame:frame];
 	if (self) {
-        
-        
         _orgFrame = frame;
 		
         
@@ -33,7 +31,7 @@
         [tapGesture setNumberOfTouchesRequired:1];
         [self addGestureRecognizer:tapGesture];
         
-        //Title Label
+        // title label
         if (!self.titleLabel){
             UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 2.0f, self.frame.size.width-(2*20.0f), self.frame.size.height)];
             [titleLabel setText:NSLocalizedString(@"New tab is what it is", nil)];
@@ -43,6 +41,7 @@
             self.titleLabel = titleLabel;
         }
         
+        // close button
         if (!self.closeButton){
             UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
             [closeButton addTarget:self action:@selector(closeButtonTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
@@ -52,9 +51,8 @@
             [self addSubview:closeButton];
             self.closeButton = closeButton;
         }
-        
-        
 	}
+    
 	return self;
 }
 - (void)setInnerBackgroundColor:(UIColor *)color
@@ -157,7 +155,7 @@
     [self.titleLabel setFont:(_highlighted ? self.appearance.tabLabelFontHighlighted : self.appearance.tabLabelFontEnabled)];
     [self.titleLabel setTextColor:(_highlighted ? self.appearance.tabLabelColorHighlighted : self.appearance.tabLabelColorEnabled)];
     
-    [self.closeButton setHidden:!_highlighted];
+    [self.closeButton setHidden:!_highlighted || !_closable];
     
     [self setBackgroundColor:[UIColor clearColor]];
 }

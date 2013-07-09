@@ -37,6 +37,8 @@
 
 @property (nonatomic, strong) QMBTabsAppearance *appearance;
 
+@property (nonatomic) BOOL closable;
+
 - (void) setHighlighted:(BOOL)highlighted;
 
 @end
