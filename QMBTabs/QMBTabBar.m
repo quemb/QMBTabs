@@ -56,7 +56,9 @@ static float highlightBarHeight = 5.0f;
     tabItem.titleLabel.text = NSLocalizedString(@"New tab", @"QMBTabBar New Tab Title");
     [tabItem setDelegate:self];
     
-    completition(tabItem);
+    if(completition != nil) {
+        completition(tabItem);
+    }
     
     [_items addObject:tabItem];
 
