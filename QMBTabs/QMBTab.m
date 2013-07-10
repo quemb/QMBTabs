@@ -157,7 +157,9 @@
                                               (qmbTabHeight - (self.appearance.tabCloseButtonImage).size.height) / 2 + qmbTabTopOffset,
                                               (self.appearance.tabCloseButtonImage).size.width, (self.appearance.tabCloseButtonImage).size.height)];
     }else {
-        [self.closeButton setFrame:CGRectMake(0, 0, 0, 0)];
+        [self.closeButton setFrame:CGRectMake(qmbTabWidth - qmbTabSideOffset - qmbTabCurvature - (self.appearance.tabCloseButtonImage).size.width,
+                                              (qmbTabHeight - (self.appearance.tabCloseButtonImage).size.height) / 2 + qmbTabTopOffset,
+                                              0, (self.appearance.tabCloseButtonImage).size.height)];
     }
     
     

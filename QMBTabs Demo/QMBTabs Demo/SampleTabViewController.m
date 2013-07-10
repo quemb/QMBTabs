@@ -40,7 +40,7 @@ static UIColor *randomColor() {
 	
     self.delegate = self;
     
-    for (int i = 0; i<4; i++) {
+    for (int i = 0; i<6; i++) {
         UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SampleTabItemViewController"];
         [self addViewController:viewController withCompletion:^(QMBTab *tabItem) {
             tabItem.titleLabel.text = [NSString stringWithFormat:@"Hello I'm a Tab! %d", i];
