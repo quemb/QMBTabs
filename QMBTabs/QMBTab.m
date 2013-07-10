@@ -33,12 +33,13 @@
         
         // title label
         if (!self.titleLabel){
-            UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 2.0f, self.frame.size.width-(2*20.0f), self.frame.size.height)];
+            UILabel *titleLabel = [[UILabel alloc] init];
             [titleLabel setText:NSLocalizedString(@"New tab is what it is", nil)];
             [titleLabel setBackgroundColor:[UIColor clearColor]];
-            [titleLabel setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
-            [self addSubview:titleLabel];
+            //[titleLabel setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
             self.titleLabel = titleLabel;
+            [self addSubview:self.titleLabel];
+            
         }
         
         // close button
@@ -151,13 +152,20 @@
 	CGContextEndTransparencyLayer(context);
 	CGContextRestoreGState(context);
     
+    if (_highlighted){
+        [self.closeButton setFrame:CGRectMake(qmbTabWidth - qmbTabSideOffset - qmbTabCurvature - (self.appearance.tabCloseButtonImage).size.width,
+                                              (qmbTabHeight - (self.appearance.tabCloseButtonImage).size.height) / 2 + qmbTabTopOffset,
+                                              (self.appearance.tabCloseButtonImage).size.width, (self.appearance.tabCloseButtonImage).size.height)];
+    }else {
+        [self.closeButton setFrame:CGRectMake(0, 0, 0, 0)];
+    }
+    
     
     [self.titleLabel setFrame:CGRectMake(qmbTabSideOffset + qmbTabCurvature, 2.0f,
-                                         qmbTabWidth - qmbTabSideOffset - qmbTabCurvature - (self.appearance.tabCloseButtonImage).size.width, self.frame.size.height)];
+                                         qmbTabWidth - qmbTabSideOffset - 2*qmbTabCurvature - self.closeButton.frame.size.width, self.frame.size.height)];
     
-    [self.closeButton setFrame:CGRectMake(qmbTabWidth - qmbTabSideOffset - qmbTabCurvature - (self.appearance.tabCloseButtonImage).size.width,
-                                          (qmbTabHeight - (self.appearance.tabCloseButtonImage).size.height) / 2 + qmbTabTopOffset,
-                                          (self.appearance.tabCloseButtonImage).size.width, (self.appearance.tabCloseButtonImage).size.height)];
+    
+    
     
     [self.titleLabel setFont:(_highlighted ? self.appearance.tabLabelFontHighlighted : self.appearance.tabLabelFontEnabled)];
     [self.titleLabel setTextColor:(_highlighted ? self.appearance.tabLabelColorHighlighted : self.appearance.tabLabelColorEnabled)];
