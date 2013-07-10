@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		89144FD1178D7AFD009C4CA1 /* SampleTabItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89144FD0178D7AFD009C4CA1 /* SampleTabItemViewController.m */; };
+		896CE997178DA1E000DBE468 /* qmb-tab-background-highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 896CE98F178DA1E000DBE468 /* qmb-tab-background-highlight.png */; };
+		896CE998178DA1E000DBE468 /* qmb-tab-background-highlight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 896CE990178DA1E000DBE468 /* qmb-tab-background-highlight@2x.png */; };
+		896CE999178DA1E000DBE468 /* qmb-tab-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 896CE991178DA1E000DBE468 /* qmb-tab-background.png */; };
+		896CE99A178DA1E000DBE468 /* qmb-tab-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 896CE992178DA1E000DBE468 /* qmb-tab-background@2x.png */; };
+		896CE99B178DA1E000DBE468 /* qmb-tab-close-icon-highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 896CE993178DA1E000DBE468 /* qmb-tab-close-icon-highlight.png */; };
+		896CE99C178DA1E000DBE468 /* qmb-tab-close-icon-highlight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 896CE994178DA1E000DBE468 /* qmb-tab-close-icon-highlight@2x.png */; };
+		896CE99D178DA1E000DBE468 /* qmb-tab-close-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 896CE995178DA1E000DBE468 /* qmb-tab-close-icon.png */; };
+		896CE99E178DA1E000DBE468 /* qmb-tab-close-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 896CE996178DA1E000DBE468 /* qmb-tab-close-icon@2x.png */; };
+		896CE9A1178DA27F00DBE468 /* navigation-bar-background_44.png in Resources */ = {isa = PBXBuildFile; fileRef = 896CE99F178DA27F00DBE468 /* navigation-bar-background_44.png */; };
+		896CE9A2178DA27F00DBE468 /* navigation-bar-background_44@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 896CE9A0178DA27F00DBE468 /* navigation-bar-background_44@2x.png */; };
 		89851C0017846F94007310F9 /* QMBTabViewCloseButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89851BFF17846F94007310F9 /* QMBTabViewCloseButton@2x.png */; };
 		89851C0317846F9E007310F9 /* QMBTabsAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 89851C0217846F9E007310F9 /* QMBTabsAppearance.m */; };
 		D056D7CE178ADFC5005A082F /* QMBTabViewCloseButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D056D7CD178ADFC5005A082F /* QMBTabViewCloseButtonHighlighted@2x.png */; };
@@ -43,6 +54,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		89144FCF178D7AFD009C4CA1 /* SampleTabItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleTabItemViewController.h; sourceTree = "<group>"; };
+		89144FD0178D7AFD009C4CA1 /* SampleTabItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleTabItemViewController.m; sourceTree = "<group>"; };
+		896CE98F178DA1E000DBE468 /* qmb-tab-background-highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "qmb-tab-background-highlight.png"; path = "Resources/qmb-tab-background-highlight.png"; sourceTree = "<group>"; };
+		896CE990178DA1E000DBE468 /* qmb-tab-background-highlight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "qmb-tab-background-highlight@2x.png"; path = "Resources/qmb-tab-background-highlight@2x.png"; sourceTree = "<group>"; };
+		896CE991178DA1E000DBE468 /* qmb-tab-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "qmb-tab-background.png"; path = "Resources/qmb-tab-background.png"; sourceTree = "<group>"; };
+		896CE992178DA1E000DBE468 /* qmb-tab-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "qmb-tab-background@2x.png"; path = "Resources/qmb-tab-background@2x.png"; sourceTree = "<group>"; };
+		896CE993178DA1E000DBE468 /* qmb-tab-close-icon-highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "qmb-tab-close-icon-highlight.png"; path = "Resources/qmb-tab-close-icon-highlight.png"; sourceTree = "<group>"; };
+		896CE994178DA1E000DBE468 /* qmb-tab-close-icon-highlight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "qmb-tab-close-icon-highlight@2x.png"; path = "Resources/qmb-tab-close-icon-highlight@2x.png"; sourceTree = "<group>"; };
+		896CE995178DA1E000DBE468 /* qmb-tab-close-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "qmb-tab-close-icon.png"; path = "Resources/qmb-tab-close-icon.png"; sourceTree = "<group>"; };
+		896CE996178DA1E000DBE468 /* qmb-tab-close-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "qmb-tab-close-icon@2x.png"; path = "Resources/qmb-tab-close-icon@2x.png"; sourceTree = "<group>"; };
+		896CE99F178DA27F00DBE468 /* navigation-bar-background_44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "navigation-bar-background_44.png"; path = "Resources/navigation-bar-background_44.png"; sourceTree = "<group>"; };
+		896CE9A0178DA27F00DBE468 /* navigation-bar-background_44@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "navigation-bar-background_44@2x.png"; path = "Resources/navigation-bar-background_44@2x.png"; sourceTree = "<group>"; };
 		89851BFF17846F94007310F9 /* QMBTabViewCloseButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QMBTabViewCloseButton@2x.png"; sourceTree = "<group>"; };
 		89851C0117846F9E007310F9 /* QMBTabsAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMBTabsAppearance.h; sourceTree = "<group>"; };
 		89851C0217846F9E007310F9 /* QMBTabsAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMBTabsAppearance.m; sourceTree = "<group>"; };
@@ -102,6 +125,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		896CE98E178DA1AE00DBE468 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				896CE99F178DA27F00DBE468 /* navigation-bar-background_44.png */,
+				896CE9A0178DA27F00DBE468 /* navigation-bar-background_44@2x.png */,
+				896CE98F178DA1E000DBE468 /* qmb-tab-background-highlight.png */,
+				896CE990178DA1E000DBE468 /* qmb-tab-background-highlight@2x.png */,
+				896CE991178DA1E000DBE468 /* qmb-tab-background.png */,
+				896CE992178DA1E000DBE468 /* qmb-tab-background@2x.png */,
+				896CE993178DA1E000DBE468 /* qmb-tab-close-icon-highlight.png */,
+				896CE994178DA1E000DBE468 /* qmb-tab-close-icon-highlight@2x.png */,
+				896CE995178DA1E000DBE468 /* qmb-tab-close-icon.png */,
+				896CE996178DA1E000DBE468 /* qmb-tab-close-icon@2x.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		89A00D541781878500B91258 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +185,7 @@
 		E24EDB51177F09EC00673520 /* QMBTabs Demo */ = {
 			isa = PBXGroup;
 			children = (
+				896CE98E178DA1AE00DBE468 /* Resources */,
 				E24EDB5A177F09EC00673520 /* QMBAppDelegate.h */,
 				E24EDB5B177F09EC00673520 /* QMBAppDelegate.m */,
 				E24EDB63177F09EC00673520 /* MainStoryboard_iPhone.storyboard */,
@@ -152,6 +193,8 @@
 				E24EDB52177F09EC00673520 /* Supporting Files */,
 				E24EDBA01780CF7600673520 /* SampleTabViewController.h */,
 				E24EDBA11780CF7600673520 /* SampleTabViewController.m */,
+				89144FCF178D7AFD009C4CA1 /* SampleTabItemViewController.h */,
+				89144FD0178D7AFD009C4CA1 /* SampleTabItemViewController.m */,
 			);
 			path = "QMBTabs Demo";
 			sourceTree = "<group>";
@@ -286,6 +329,16 @@
 				E24EDB68177F09EC00673520 /* MainStoryboard_iPad.storyboard in Resources */,
 				89851C0017846F94007310F9 /* QMBTabViewCloseButton@2x.png in Resources */,
 				D056D7CE178ADFC5005A082F /* QMBTabViewCloseButtonHighlighted@2x.png in Resources */,
+				896CE997178DA1E000DBE468 /* qmb-tab-background-highlight.png in Resources */,
+				896CE998178DA1E000DBE468 /* qmb-tab-background-highlight@2x.png in Resources */,
+				896CE999178DA1E000DBE468 /* qmb-tab-background.png in Resources */,
+				896CE99A178DA1E000DBE468 /* qmb-tab-background@2x.png in Resources */,
+				896CE99B178DA1E000DBE468 /* qmb-tab-close-icon-highlight.png in Resources */,
+				896CE99C178DA1E000DBE468 /* qmb-tab-close-icon-highlight@2x.png in Resources */,
+				896CE99D178DA1E000DBE468 /* qmb-tab-close-icon.png in Resources */,
+				896CE99E178DA1E000DBE468 /* qmb-tab-close-icon@2x.png in Resources */,
+				896CE9A1178DA27F00DBE468 /* navigation-bar-background_44.png in Resources */,
+				896CE9A2178DA27F00DBE468 /* navigation-bar-background_44@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,6 +380,7 @@
 				E24EDB9D177F192400673520 /* QMBTab.m in Sources */,
 				E24EDBA21780CF7600673520 /* SampleTabViewController.m in Sources */,
 				89851C0317846F9E007310F9 /* QMBTabsAppearance.m in Sources */,
+				89144FD1178D7AFD009C4CA1 /* SampleTabItemViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

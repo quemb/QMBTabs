@@ -98,14 +98,14 @@
     [self addChildViewController:controller];
     [_viewControllers addObject:controller];
 
-    [controller.view setNeedsLayout];
-    controller.view.frame = CGRectMake(0,0,_contentView.frame.size.width, _contentView.frame.size.height);
-
+    
+    
     [_tabBar addTabItemWithCompletition:completition];
     
-    [self.contentView addSubview:controller.view];
-    self.selectedViewController = controller;
-    [_tabBar selectTab:[_tabBar tabItemForIndex:[self indexForViewController:self.selectedViewController]]];
+    if([_viewControllers count] == 1){
+        [self selectViewController:controller];
+    }
+
     [controller didMoveToParentViewController:self];
     
     if ([self.delegate respondsToSelector:@selector(tabViewController:didAddViewController:)]){
@@ -117,21 +117,34 @@
     UIViewController *current = self.selectedViewController;
     if (controller == self.selectedViewController)
         return;
+
+    controller.view.frame = CGRectMake(0,0,_contentView.frame.size.width, _contentView.frame.size.height);
+    if (controller.view.superview == nil){
+        [controller.view setNeedsLayout];
+        [controller.view setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
+        [self.contentView addSubview:controller.view];
+        self.selectedViewController = controller;
+        [_tabBar selectTab:[_tabBar tabItemForIndex:[self indexForViewController:self.selectedViewController]]];
+    }else {
+        [self transitionFromViewController:current
+                          toViewController:controller
+                                  duration:0
+                                   options:0
+                                animations:nil
+                                completion:^(BOOL finished) {
+                                    self.selectedViewController = controller;
+                                    [_tabBar selectTab:[_tabBar tabItemForIndex:[self indexForViewController:self.selectedViewController]]];
+                                    
+                                    if ([self.delegate respondsToSelector:@selector(tabViewController:didSelectViewController:)]){
+                                        [self.delegate performSelector:@selector(tabViewController:didSelectViewController:) withObject:self withObject:self.selectedViewController];
+                                    }
+                                    
+                                }];
+    }
     
-    [self transitionFromViewController:current
-                      toViewController:controller
-                              duration:0.5
-                               options:UIViewAnimationOptionCurveEaseInOut
-                            animations:nil
-                            completion:^(BOOL finished) {
-                                self.selectedViewController = controller;
-                                [_tabBar selectTab:[_tabBar tabItemForIndex:[self indexForViewController:self.selectedViewController]]];
-                                
-                                if ([self.delegate respondsToSelector:@selector(tabViewController:didSelectViewController:)]){
-                                    [self.delegate performSelector:@selector(tabViewController:didSelectViewController:) withObject:self withObject:self.selectedViewController];
-                                }
-                                
-                            }];
+    
+    
+    
 }
 
 #pragma mark - QMBTabBar Delegate
