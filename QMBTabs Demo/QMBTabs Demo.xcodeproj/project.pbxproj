@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		89144FD1178D7AFD009C4CA1 /* SampleTabItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89144FD0178D7AFD009C4CA1 /* SampleTabItemViewController.m */; };
 		89851C0017846F94007310F9 /* QMBTabViewCloseButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89851BFF17846F94007310F9 /* QMBTabViewCloseButton@2x.png */; };
 		89851C0317846F9E007310F9 /* QMBTabsAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 89851C0217846F9E007310F9 /* QMBTabsAppearance.m */; };
 		D056D7CE178ADFC5005A082F /* QMBTabViewCloseButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D056D7CD178ADFC5005A082F /* QMBTabViewCloseButtonHighlighted@2x.png */; };
@@ -43,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		89144FCF178D7AFD009C4CA1 /* SampleTabItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleTabItemViewController.h; sourceTree = "<group>"; };
+		89144FD0178D7AFD009C4CA1 /* SampleTabItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleTabItemViewController.m; sourceTree = "<group>"; };
 		89851BFF17846F94007310F9 /* QMBTabViewCloseButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QMBTabViewCloseButton@2x.png"; sourceTree = "<group>"; };
 		89851C0117846F9E007310F9 /* QMBTabsAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMBTabsAppearance.h; sourceTree = "<group>"; };
 		89851C0217846F9E007310F9 /* QMBTabsAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMBTabsAppearance.m; sourceTree = "<group>"; };
@@ -152,6 +155,8 @@
 				E24EDB52177F09EC00673520 /* Supporting Files */,
 				E24EDBA01780CF7600673520 /* SampleTabViewController.h */,
 				E24EDBA11780CF7600673520 /* SampleTabViewController.m */,
+				89144FCF178D7AFD009C4CA1 /* SampleTabItemViewController.h */,
+				89144FD0178D7AFD009C4CA1 /* SampleTabItemViewController.m */,
 			);
 			path = "QMBTabs Demo";
 			sourceTree = "<group>";
@@ -327,6 +332,7 @@
 				E24EDB9D177F192400673520 /* QMBTab.m in Sources */,
 				E24EDBA21780CF7600673520 /* SampleTabViewController.m in Sources */,
 				89851C0317846F9E007310F9 /* QMBTabsAppearance.m in Sources */,
+				89144FD1178D7AFD009C4CA1 /* SampleTabItemViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

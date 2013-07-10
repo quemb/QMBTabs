@@ -8,6 +8,8 @@
 
 #import "SampleTabViewController.h"
 
+#import "SampleTabItemViewController.h"
+
 @interface SampleTabViewController ()
 
 @end
@@ -39,18 +41,7 @@ static UIColor *randomColor() {
     self.delegate = self;
     
     for (int i = 0; i<3; i++) {
-        UIViewController *viewController = [[UIViewController alloc] init];
-        [viewController.view setBackgroundColor:randomColor()];
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-        [label setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight ];
-        [label setTextAlignment:NSTextAlignmentCenter];
-        [label setFont:[UIFont systemFontOfSize:500.0f]];
-        [label setAdjustsFontSizeToFitWidth:YES];
-        [label setTextColor:[UIColor colorWithWhite:1.0f alpha:0.5f]];
-        [label setBackgroundColor:[UIColor clearColor]];
-        [label setText:[NSString stringWithFormat:@"%d",i]];
-        viewController.title = [NSString stringWithFormat:@"%d",i];
-        [viewController.view addSubview:label];
+        UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SampleTabItemViewController"];
         [self addViewController:viewController withCompletion:^(QMBTab *tabItem) {
             tabItem.titleLabel.text = [NSString stringWithFormat:@"Hello I'm a Tab! %d", i];
             tabItem.closable = YES;

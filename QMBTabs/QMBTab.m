@@ -51,6 +51,8 @@
             [self addSubview:closeButton];
             self.closeButton = closeButton;
         }
+        
+
 	}
     
 	return self;
@@ -76,6 +78,11 @@
 
 - (void)drawRect:(CGRect)rect
 {
+    
+    if (!_innerBackgroundColor){
+        [self setInnerBackgroundColor:self.appearance.tabBackgroundColorEnabled];
+    }
+    
     if (!self.normalColor){
         self.normalColor = self.appearance.tabBackgroundColorEnabled;
         self.highlightColor = self.appearance.tabBackgroundColorHighlighted;
