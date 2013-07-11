@@ -27,13 +27,22 @@
         UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SampleTabItemViewController"];
         [self addViewController:viewController withCompletion:^(QMBTab *tabItem) {
             tabItem.titleLabel.text = [NSString stringWithFormat:@"Hello I'm a Tab! %d", i];
-            tabItem.closable = YES;
         }];
     }
     
     [self addViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"SampleTabItemViewController"] withCompletion:^(QMBTab *tabItem) {
+        tabItem.titleLabel.text = @"Printer!";
+        
+        tabItem.iconImage = [UIImage imageNamed:@"monotone_printer_hardware.png"];
+        tabItem.iconHighlightedImage = [UIImage imageNamed:@"monotone_printer_hardware-highlight.png"];
+    }];
+    
+    [self addViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"SampleTabItemViewController"] withCompletion:^(QMBTab *tabItem) {
         tabItem.titleLabel.text = @"Hello I'm a nonclosable Tab!";
         tabItem.closable = NO;
+        
+        tabItem.iconImage = [UIImage imageNamed:@"monotone_wrench_settings.png"];
+        tabItem.iconHighlightedImage = [UIImage imageNamed:@"monotone_wrench_settings-highlight.png"];
     }];
     
 }
@@ -57,8 +66,11 @@
     [appearance setTabCloseButtonImage:[UIImage imageNamed:@"qmb-tab-close-icon.png"]];
     [appearance setTabCloseButtonHighlightedImage:[UIImage imageNamed:@"qmb-tab-close-icon-highlight.png"]];
     
-    [appearance setTabIconHighlightedImage:[UIImage imageNamed:@"qmb-tab-close-icon-highlight.png"]];
-    [appearance setTabIconImage:nil]; //[UIImage imageNamed:@"qmb-tab-close-icon.png"]];
+    [appearance setTabDefaultIconHighlightedImage:nil];
+    [appearance setTabDefaultIconImage:nil];
+    
+//    [appearance setTabDefaultIconHighlightedImage:[UIImage imageNamed:@"qmb-tab-icon-default-highlight.png"]];
+//    [appearance setTabDefaultIconImage:[UIImage imageNamed:@"qmb-tab-icon-default.png"]];
     
     [appearance setTabLabelColorHighlighted:[UIColor whiteColor]];
     

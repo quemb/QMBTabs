@@ -20,7 +20,7 @@
 	self = [super initWithFrame:frame];
 	if (self) {
         _orgFrame = frame;
-		
+		_closable = YES;
         
         [self setClipsToBounds:NO];
         
@@ -36,19 +36,14 @@
             UILabel *titleLabel = [[UILabel alloc] init];
             [titleLabel setText:NSLocalizedString(@"New tab is what it is", nil)];
             [titleLabel setBackgroundColor:[UIColor clearColor]];
-            //[titleLabel setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
             self.titleLabel = titleLabel;
             [self addSubview:self.titleLabel];
-            
         }
         
         // close button
         if (!self.closeButton){
             UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
             [closeButton addTarget:self action:@selector(closeButtonTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
-            [closeButton setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin];
-            [closeButton setFrame:CGRectMake(self.frame.size.width-30.0f, 12.0f, 15.0f, 15.0f)];
-            [closeButton setHidden:YES];
             [self addSubview:closeButton];
             self.closeButton = closeButton;
         }
@@ -111,6 +106,9 @@
     CGFloat qmbTabHeight = self.frame.size.height - qmbTabTopOffset;;
     
     CGFloat startY = self.frame.size.height;
+    
+    CGFloat qmbTabIconWidth = 0.0f;
+    CGFloat qmbTabIconMargin = 3.0f;
 
 	CGContextSaveGState(context);
     
@@ -159,39 +157,75 @@
 	CGContextEndTransparencyLayer(context);
 	CGContextRestoreGState(context);
     
+    [self.iconImageView setImage:nil];
+    
+    // highlighted tab
     if (_highlighted){
+        // set frame of the close button
         [self.closeButton setFrame:CGRectMake(qmbTabWidth - qmbTabSideOffset - qmbTabCurvature - (self.appearance.tabCloseButtonImage).size.width,
                                               (qmbTabHeight - (self.appearance.tabCloseButtonImage).size.height) / 2 + qmbTabTopOffset,
                                               (self.appearance.tabCloseButtonImage).size.width, (self.appearance.tabCloseButtonImage).size.height)];
         
+        // set font and color of the title label
         [self.titleLabel setFont:self.appearance.tabLabelFontHighlighted];
         [self.titleLabel setTextColor:self.appearance.tabLabelColorHighlighted];
         
-        if(self.appearance.tabIconHighlightedImage) {
+        // tab default icon
+        if(self.appearance.tabDefaultIconHighlightedImage) {
             [self.iconImageView setFrame:CGRectMake(qmbTabSideOffset + qmbTabCurvature,
-                                                    (qmbTabHeight - (self.appearance.tabIconHighlightedImage).size.height) / 2 + qmbTabTopOffset,
-                                                    (self.appearance.tabIconHighlightedImage).size.width, (self.appearance.tabIconHighlightedImage).size.height)];
-            [self.iconImageView setImage:self.appearance.tabIconHighlightedImage];
+                                                    (qmbTabHeight - (self.appearance.tabDefaultIconHighlightedImage).size.height) / 2 + qmbTabTopOffset,
+                                                    (self.appearance.tabDefaultIconHighlightedImage).size.width, (self.appearance.tabDefaultIconHighlightedImage).size.height)];
+            [self.iconImageView setImage:self.appearance.tabDefaultIconHighlightedImage];
+            
+            qmbTabIconWidth = (self.appearance.tabDefaultIconHighlightedImage).size.width + qmbTabIconMargin;
         }
         
+        // tab icon
+        if(self.iconHighlightedImage) {
+            [self.iconImageView setFrame:CGRectMake(qmbTabSideOffset + qmbTabCurvature,
+                                                    (qmbTabHeight - (self.iconHighlightedImage).size.height) / 2 + qmbTabTopOffset,
+                                                    (self.iconHighlightedImage).size.width, (self.iconHighlightedImage).size.height)];
+            [self.iconImageView setImage:self.iconHighlightedImage];
+            
+            qmbTabIconWidth = (self.iconHighlightedImage).size.width + qmbTabIconMargin;
+        }
+        
+        [self.titleLabel setFrame:CGRectMake(qmbTabSideOffset + qmbTabCurvature + qmbTabIconWidth, 2.0f,
+                                             qmbTabWidth - 2*qmbTabSideOffset - 2*qmbTabCurvature - (_closable ? self.closeButton.frame.size.width + qmbTabIconMargin : 0.0f) - qmbTabIconWidth, self.frame.size.height)];
+        
     }else {
+        // set frame of the close button
         [self.closeButton setFrame:CGRectMake(qmbTabWidth - qmbTabSideOffset - qmbTabCurvature - (self.appearance.tabCloseButtonImage).size.width,
                                               (qmbTabHeight - (self.appearance.tabCloseButtonImage).size.height) / 2 + qmbTabTopOffset,
                                               0, (self.appearance.tabCloseButtonImage).size.height)];
+        
+        // set font and color of the title label
         [self.titleLabel setFont:self.appearance.tabLabelFontEnabled];
         [self.titleLabel setTextColor:self.appearance.tabLabelColorEnabled];
         
-        if(self.appearance.tabIconImage) {
+        // tab default icon
+        if(self.appearance.tabDefaultIconImage) {
             [self.iconImageView setFrame:CGRectMake(qmbTabSideOffset + qmbTabCurvature,
-                                                    (qmbTabHeight - (self.appearance.tabIconHighlightedImage).size.height) / 2 + qmbTabTopOffset,
-                                                    (self.appearance.tabIconHighlightedImage).size.width, (self.appearance.tabIconHighlightedImage).size.height)];
-            [self.iconImageView setImage:self.appearance.tabIconImage];
+                                                    (qmbTabHeight - (self.appearance.tabDefaultIconImage).size.height) / 2 + qmbTabTopOffset,
+                                                    (self.appearance.tabDefaultIconImage).size.width, (self.appearance.tabDefaultIconImage).size.height)];
+            [self.iconImageView setImage:self.appearance.tabDefaultIconImage];
+            
+            qmbTabIconWidth = (self.appearance.tabDefaultIconImage).size.width + qmbTabIconMargin;
         }
+        
+        // tab icon
+        if(self.iconImage) {
+            [self.iconImageView setFrame:CGRectMake(qmbTabSideOffset + qmbTabCurvature,
+                                                    (qmbTabHeight - (self.iconImage).size.height) / 2 + qmbTabTopOffset,
+                                                    (self.iconImage).size.width, (self.iconImage).size.height)];
+            [self.iconImageView setImage:self.iconImage];
+            
+            qmbTabIconWidth = (self.iconImage).size.width + qmbTabIconMargin;
+        }
+        
+        [self.titleLabel setFrame:CGRectMake(qmbTabSideOffset + qmbTabCurvature + qmbTabIconWidth, 2.0f,
+                                             qmbTabWidth - 2*qmbTabSideOffset - 2*qmbTabCurvature - qmbTabIconWidth, self.frame.size.height)];
     }
-    
-    
-    [self.titleLabel setFrame:CGRectMake(qmbTabSideOffset + qmbTabCurvature, 2.0f,
-                                         qmbTabWidth - qmbTabSideOffset - 2*qmbTabCurvature - self.closeButton.frame.size.width, self.frame.size.height)];
     
     [self.closeButton setHidden:!_highlighted || !_closable];
     

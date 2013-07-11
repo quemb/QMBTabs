@@ -28,8 +28,8 @@
 @property (nonatomic,strong) UIImage *tabCloseButtonImage;
 @property (nonatomic,strong) UIImage *tabCloseButtonHighlightedImage;
 
-@property (nonatomic, weak) UIImage *tabIconImage;
-@property (nonatomic, weak) UIImage *tabIconHighlightedImage;
+@property (nonatomic, weak) UIImage *tabDefaultIconImage;
+@property (nonatomic, weak) UIImage *tabDefaultIconHighlightedImage;
 
 @property (nonatomic) CGFloat tabShadowWidthOffset;
 @property (nonatomic) CGFloat tabShadowHeightOffset;

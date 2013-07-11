@@ -37,8 +37,8 @@
     _tabCloseButtonImage = [UIImage imageNamed:@"QMBTabViewCloseButton"];
     _tabCloseButtonHighlightedImage = [UIImage imageNamed:@"QMBTabViewCloseButtonHighlighted"];
     
-    _tabIconImage = nil;
-    _tabIconHighlightedImage = nil;
+    _tabDefaultIconImage = nil;
+    _tabDefaultIconHighlightedImage = nil;
     
     _tabShadowWidthOffset = 0.0f;
     _tabShadowHeightOffset = 0.0f;
