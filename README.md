@@ -1,27 +1,32 @@
 QMBTabs
 =======
 
-Version: 0.0.2 - alpha
+<a target="_blank" href="http://d.pr/i/eXIu">
+<img style="position: relative; width: auto; margin: 0;" src="http://d.pr/i/eXIu+" alt="QMBTabs"/>
+</a>
 
-Tab View Controller just like Safari or mobile Chrome
+Version: 0.1 - beta - Feel free to use and test it!
+
+Tab View Controller just like mobile Chrome
 
 ## Features:
 - iOS 5 and above (uses ChildViewController API - released in iOS 5)
 - Top Tab View
-- Closeable Tabs
+- Closeable Tabs (optional)
+- Tab Stacking on edges like mobile Chrome
 - Action Indicator Bar
 - Tabs are drawn without images (incl. autosizing)
-- Tabs are scrolling currently, but will stack on the edge in future version
 - Many delegation methods
 - works in iPhone, iPad (Landscape and portait)
-- Tab Stacking on edges like mobile Chrome
+- Working Sample provided
 
 ## To Do:
 - Stacking or Scroll - Option (Stacking only at the moment)
 - Sorting (Tap & Hold)
 - Cocoa Pod Contribution
+- Tab Icon
 
-## Other good implementations:
+## More Tab Views:
 * [SGTabs by Simon Grätzer](https://github.com/graetzer/SGTabs "SGTabs by Simon Grätzer")
 * [MHTabBarController by Matthijs Hollemans](https://github.com/hollance/MHTabBarController "MHTabBarController by Matthijs Hollemans")
 * [BHTabBar by Brian Hammond](https://github.com/fictorial/BHTabBar "BHTabBar by Brian Hammond")
