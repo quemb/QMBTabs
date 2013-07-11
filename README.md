@@ -13,6 +13,7 @@ Tab View Controller just like mobile Chrome
 - iOS 5 and above (uses ChildViewController API - released in iOS 5)
 - Top Tab View
 - Closeable Tabs (optional)
+- Default and/or Custom Tab Image
 - Tab Stacking on edges like mobile Chrome
 - Action Indicator Bar
 - Tabs are drawn without images (incl. autosizing)
