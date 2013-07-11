@@ -27,7 +27,7 @@
 {
     [super viewDidLoad];
 	
-    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.cocoacontrols.com/"]]];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.github.com"]]];
 }
 
 - (void)didReceiveMemoryWarning

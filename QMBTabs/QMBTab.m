@@ -53,6 +53,13 @@
             self.closeButton = closeButton;
         }
         
+        // icon image view
+        if (!self.iconImageView){
+            UIImageView *iconImageView = [[UIImageView alloc] init];
+            [self addSubview:iconImageView];
+            self.iconImageView = iconImageView;
+        }
+        
 
 	}
     
@@ -156,21 +163,35 @@
         [self.closeButton setFrame:CGRectMake(qmbTabWidth - qmbTabSideOffset - qmbTabCurvature - (self.appearance.tabCloseButtonImage).size.width,
                                               (qmbTabHeight - (self.appearance.tabCloseButtonImage).size.height) / 2 + qmbTabTopOffset,
                                               (self.appearance.tabCloseButtonImage).size.width, (self.appearance.tabCloseButtonImage).size.height)];
+        
+        [self.titleLabel setFont:self.appearance.tabLabelFontHighlighted];
+        [self.titleLabel setTextColor:self.appearance.tabLabelColorHighlighted];
+        
+        if(self.appearance.tabIconHighlightedImage) {
+            [self.iconImageView setFrame:CGRectMake(qmbTabSideOffset + qmbTabCurvature,
+                                                    (qmbTabHeight - (self.appearance.tabIconHighlightedImage).size.height) / 2 + qmbTabTopOffset,
+                                                    (self.appearance.tabIconHighlightedImage).size.width, (self.appearance.tabIconHighlightedImage).size.height)];
+            [self.iconImageView setImage:self.appearance.tabIconHighlightedImage];
+        }
+        
     }else {
         [self.closeButton setFrame:CGRectMake(qmbTabWidth - qmbTabSideOffset - qmbTabCurvature - (self.appearance.tabCloseButtonImage).size.width,
                                               (qmbTabHeight - (self.appearance.tabCloseButtonImage).size.height) / 2 + qmbTabTopOffset,
                                               0, (self.appearance.tabCloseButtonImage).size.height)];
+        [self.titleLabel setFont:self.appearance.tabLabelFontEnabled];
+        [self.titleLabel setTextColor:self.appearance.tabLabelColorEnabled];
+        
+        if(self.appearance.tabIconImage) {
+            [self.iconImageView setFrame:CGRectMake(qmbTabSideOffset + qmbTabCurvature,
+                                                    (qmbTabHeight - (self.appearance.tabIconHighlightedImage).size.height) / 2 + qmbTabTopOffset,
+                                                    (self.appearance.tabIconHighlightedImage).size.width, (self.appearance.tabIconHighlightedImage).size.height)];
+            [self.iconImageView setImage:self.appearance.tabIconImage];
+        }
     }
     
     
     [self.titleLabel setFrame:CGRectMake(qmbTabSideOffset + qmbTabCurvature, 2.0f,
                                          qmbTabWidth - qmbTabSideOffset - 2*qmbTabCurvature - self.closeButton.frame.size.width, self.frame.size.height)];
-    
-    
-    
-    
-    [self.titleLabel setFont:(_highlighted ? self.appearance.tabLabelFontHighlighted : self.appearance.tabLabelFontEnabled)];
-    [self.titleLabel setTextColor:(_highlighted ? self.appearance.tabLabelColorHighlighted : self.appearance.tabLabelColorEnabled)];
     
     [self.closeButton setHidden:!_highlighted || !_closable];
     
@@ -195,7 +216,8 @@
 
 #pragma mark - Gesture
 
-- (void) didTap:(id)sender {
+- (void) didTap:(id)sender
+{
     if ([self.delegate respondsToSelector:@selector(didSelectTab:)]){
         [self.delegate performSelector:@selector(didSelectTab:) withObject:self];
     }

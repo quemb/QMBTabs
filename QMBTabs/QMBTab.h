@@ -28,6 +28,7 @@
 
 @property (nonatomic, weak) UILabel *titleLabel;
 @property (nonatomic, weak) UIButton *closeButton;
+@property (nonatomic, weak) UIImageView *iconImageView;
 
 @property (strong, nonatomic) UIColor *innerBackgroundColor;
 @property (strong, nonatomic) UIColor *foregroundColor;
@@ -38,6 +39,8 @@
 @property (nonatomic, strong) QMBTabsAppearance *appearance;
 
 @property (nonatomic) BOOL closable;
+@property (nonatomic, weak) UIImage *iconImage;
+@property (nonatomic, weak) UIImage *iconHighlightedImage;
 
 - (void) setHighlighted:(BOOL)highlighted;
 

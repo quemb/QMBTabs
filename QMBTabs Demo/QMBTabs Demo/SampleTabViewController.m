@@ -23,7 +23,7 @@
 	
     self.delegate = self;
     
-    for (int i = 0; i<8; i++) {
+    for (int i = 0; i<4; i++) {
         UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SampleTabItemViewController"];
         [self addViewController:viewController withCompletion:^(QMBTab *tabItem) {
             tabItem.titleLabel.text = [NSString stringWithFormat:@"Hello I'm a Tab! %d", i];
@@ -57,16 +57,19 @@
     [appearance setTabCloseButtonImage:[UIImage imageNamed:@"qmb-tab-close-icon.png"]];
     [appearance setTabCloseButtonHighlightedImage:[UIImage imageNamed:@"qmb-tab-close-icon-highlight.png"]];
     
+    [appearance setTabIconHighlightedImage:[UIImage imageNamed:@"qmb-tab-close-icon-highlight.png"]];
+    [appearance setTabIconImage:nil]; //[UIImage imageNamed:@"qmb-tab-close-icon.png"]];
+    
     [appearance setTabLabelColorHighlighted:[UIColor whiteColor]];
     
-    [appearance setTabLabelColorEnabled:[UIColor darkGrayColor]];
+    [appearance setTabLabelColorEnabled:[UIColor blackColor]];
     
     return appearance;
 }
 
 - (void)tabViewController:(QMBTabViewController *)tabViewController didSelectViewController:(UIViewController *)viewController
 {
-    NSLog(@"Tab Chaned to %d", [tabViewController indexForViewController:viewController]);
+    NSLog(@"Tab Changed to %d", [tabViewController indexForViewController:viewController]);
 }
 
 - (BOOL)tabViewController:(QMBTabViewController *)tabViewController shouldSelectViewController:(UIViewController *)viewController
