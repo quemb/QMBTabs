@@ -190,7 +190,7 @@
             qmbTabIconWidth = (self.iconHighlightedImage).size.width + qmbTabIconMargin;
         }
         
-        [self.titleLabel setFrame:CGRectMake(qmbTabSideOffset + qmbTabCurvature + qmbTabIconWidth, 2.0f,
+        [self.titleLabel setFrame:CGRectMake(qmbTabSideOffset + qmbTabCurvature + qmbTabIconWidth, 3.0f,
                                              qmbTabWidth - 2*qmbTabSideOffset - 2*qmbTabCurvature - (_closable ? self.closeButton.frame.size.width + qmbTabIconMargin : 0.0f) - qmbTabIconWidth, self.frame.size.height)];
         
     }else {
@@ -223,7 +223,7 @@
             qmbTabIconWidth = (self.iconImage).size.width + qmbTabIconMargin;
         }
         
-        [self.titleLabel setFrame:CGRectMake(qmbTabSideOffset + qmbTabCurvature + qmbTabIconWidth, 2.0f,
+        [self.titleLabel setFrame:CGRectMake(qmbTabSideOffset + qmbTabCurvature + qmbTabIconWidth, 3.0f,
                                              qmbTabWidth - 2*qmbTabSideOffset - 2*qmbTabCurvature - qmbTabIconWidth, self.frame.size.height)];
     }
     
