@@ -5,7 +5,7 @@ QMBTabs
 <img style="position: relative; width: auto; margin: 0;" src="http://d.pr/i/eXIu+" alt="QMBTabs"/>
 </a>
 
-Version: 0.1 - beta - Feel free to use and test it!
+Version: 0.2 - beta - Feel free to use and test it!
 
 Tab View Controller just like mobile Chrome
 
