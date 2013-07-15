@@ -45,6 +45,13 @@
         tabItem.iconHighlightedImage = [UIImage imageNamed:@"monotone_wrench_settings-highlight.png"];
     }];
     
+    UIViewController *removeController = [[UIViewController alloc] init];
+    [self addViewController:removeController withCompletion:^(QMBTab *tabItem) {
+        tabItem.titleLabel.text = @"To Delete";
+    }];
+    [self removeViewController:removeController];
+    
+    
 }
 
 #pragma mark - QMBTabViewController Delegate

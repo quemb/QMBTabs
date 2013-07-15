@@ -229,6 +229,12 @@ static float highlightBarHeight = 5.0f;
 
 - (void)tab:(QMBTab *)tab didSelectCloseButton:(UIButton *)button{
     
+    [self removeTabItem:tab];
+    
+}
+
+- (void)removeTabItem:(QMBTab *)tab
+{
     if ([self.tabBarDelegeate respondsToSelector:@selector(tabBar:willRemoveTabItem:)]){
         [self.tabBarDelegeate performSelector:@selector(tabBar:willRemoveTabItem:) withObject:self withObject:tab];
     }
@@ -243,13 +249,12 @@ static float highlightBarHeight = 5.0f;
                          [self rearrangeTabs];
                      }
                      completion:^(BOOL finished){
-
+                         
                      }];
     
     if ([self.tabBarDelegeate respondsToSelector:@selector(tabBar:didRemoveTabItem:)]){
         [self.tabBarDelegeate performSelector:@selector(tabBar:didRemoveTabItem:) withObject:self withObject:tab];
     }
-    
 }
 
 @end

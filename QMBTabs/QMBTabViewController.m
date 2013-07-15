@@ -115,24 +115,10 @@
 
 - (void)removeViewController:(UIViewController *)controller
 {
-    if ([self.delegate respondsToSelector:@selector(tabViewController:willRemoveViewController:)]){
-        [self.delegate performSelector:@selector(tabViewController:willRemoveViewController:) withObject:self withObject:controller];
-    }
     
-    if ( [self indexForViewController:self.selectedViewController]+1 < [_viewControllers count]){
-        [self selectViewController:[_viewControllers objectAtIndex:[self indexForViewController:self.selectedViewController]+1]];
-    }else if ([self indexForViewController:self.selectedViewController]-1 < [_viewControllers count]){
-        [self selectViewController:[_viewControllers objectAtIndex:[self indexForViewController:self.selectedViewController]-1]];
-    }
+    [self.tabBar removeTabItem:[self.tabBar tabItemForIndex:[self indexForViewController:controller]]];
+    // TODO: tabbar delegate will call this controller to delete the actual view controller - pretty dirty
     
-    [controller willMoveToParentViewController:nil];
-    [controller.view removeFromSuperview];
-    
-    [_viewControllers removeObject:controller];
-    
-    if ([self.delegate respondsToSelector:@selector(tabViewController:didRemoveViewController:)]){
-        [self.delegate performSelector:@selector(tabViewController:didRemoveViewController:) withObject:self withObject:controller];
-    }
 }
 
 - (void)selectViewController:(UIViewController *)controller{
@@ -206,9 +192,28 @@
 {
     
     int removeIndex = [tabBar indexForTabItem:tab];
-    UIViewController *removeController = [_viewControllers objectAtIndex:removeIndex];
+    UIViewController *controller = [_viewControllers objectAtIndex:removeIndex];
     
-    [self removeViewController:removeController];
+    if ([self.delegate respondsToSelector:@selector(tabViewController:willRemoveViewController:)]){
+        [self.delegate performSelector:@selector(tabViewController:willRemoveViewController:) withObject:self withObject:controller];
+    }
+    
+    if (controller == self.selectedViewController){
+        if ( [self indexForViewController:self.selectedViewController]+1 < [_viewControllers count]){
+            [self selectViewController:[_viewControllers objectAtIndex:[self indexForViewController:self.selectedViewController]+1]];
+        }else if ([self indexForViewController:self.selectedViewController]-1 < [_viewControllers count]){
+            [self selectViewController:[_viewControllers objectAtIndex:[self indexForViewController:self.selectedViewController]-1]];
+        }
+    }
+    
+    [controller willMoveToParentViewController:nil];
+    [controller.view removeFromSuperview];
+    
+    [_viewControllers removeObject:controller];
+    
+    if ([self.delegate respondsToSelector:@selector(tabViewController:didRemoveViewController:)]){
+        [self.delegate performSelector:@selector(tabViewController:didRemoveViewController:) withObject:self withObject:controller];
+    }
     
 }
 

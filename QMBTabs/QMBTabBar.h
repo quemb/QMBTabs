@@ -31,6 +31,7 @@
 
 - (void) addTabItemWithCompletition:(void (^)(QMBTab *tabItem))completition;
 - (void) selectTab:(QMBTab *)tab;
+- (void) removeTabItem:(QMBTab *)tab;
 
 - (NSUInteger) indexForTabItem:(QMBTab *)tabItem;
 - (QMBTab *) tabItemForIndex:(int)index;
