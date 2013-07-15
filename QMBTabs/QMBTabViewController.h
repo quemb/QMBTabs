@@ -48,6 +48,7 @@
 
 - (void)addViewController:(UIViewController *)controller;
 - (void)addViewController:(UIViewController *)controller withCompletion:(void (^)(QMBTab *tabItem))completition;
+- (void)removeViewController:(UIViewController *)controller;
 - (void)selectViewController:(UIViewController *)controller;
 - (NSUInteger) indexForViewController:(UIViewController *)viewcontroller;
 - (QMBTabsAppearance *) getDefaultAppearance;

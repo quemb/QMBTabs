@@ -113,6 +113,28 @@
     }
 }
 
+- (void)removeViewController:(UIViewController *)controller
+{
+    if ([self.delegate respondsToSelector:@selector(tabViewController:willRemoveViewController:)]){
+        [self.delegate performSelector:@selector(tabViewController:willRemoveViewController:) withObject:self withObject:controller];
+    }
+    
+    if ( [self indexForViewController:self.selectedViewController]+1 < [_viewControllers count]){
+        [self selectViewController:[_viewControllers objectAtIndex:[self indexForViewController:self.selectedViewController]+1]];
+    }else if ([self indexForViewController:self.selectedViewController]-1 < [_viewControllers count]){
+        [self selectViewController:[_viewControllers objectAtIndex:[self indexForViewController:self.selectedViewController]-1]];
+    }
+    
+    [controller willMoveToParentViewController:nil];
+    [controller.view removeFromSuperview];
+    
+    [_viewControllers removeObject:controller];
+    
+    if ([self.delegate respondsToSelector:@selector(tabViewController:didRemoveViewController:)]){
+        [self.delegate performSelector:@selector(tabViewController:didRemoveViewController:) withObject:self withObject:controller];
+    }
+}
+
 - (void)selectViewController:(UIViewController *)controller{
     UIViewController *current = self.selectedViewController;
     if (controller == self.selectedViewController)
@@ -186,24 +208,7 @@
     int removeIndex = [tabBar indexForTabItem:tab];
     UIViewController *removeController = [_viewControllers objectAtIndex:removeIndex];
     
-    if ([self.delegate respondsToSelector:@selector(tabViewController:willRemoveViewController:)]){
-        [self.delegate performSelector:@selector(tabViewController:willRemoveViewController:) withObject:self withObject:removeController];
-    }
-    
-    if ( [self indexForViewController:self.selectedViewController]+1 < [_viewControllers count]){
-        [self selectViewController:[_viewControllers objectAtIndex:[self indexForViewController:self.selectedViewController]+1]];
-    }else if ([self indexForViewController:self.selectedViewController]-1 < [_viewControllers count]){
-        [self selectViewController:[_viewControllers objectAtIndex:[self indexForViewController:self.selectedViewController]-1]];
-    }
-    
-    [removeController willMoveToParentViewController:nil];
-    [removeController.view removeFromSuperview];
-    
-    [_viewControllers removeObject:removeController];
-    
-    if ([self.delegate respondsToSelector:@selector(tabViewController:didRemoveViewController:)]){
-        [self.delegate performSelector:@selector(tabViewController:didRemoveViewController:) withObject:self withObject:removeController];
-    }
+    [self removeViewController:removeController];
     
 }
 
