@@ -55,5 +55,12 @@
 
 @end
 
+// category on UIViewController to access QMBTabViewController from an item - like UINavigationController
+@interface UIViewController (QMBTabViewController)
+
+- (QMBTabViewController*)tabViewController;
+
+@end
+
 
 

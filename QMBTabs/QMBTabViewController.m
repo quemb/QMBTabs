@@ -215,6 +215,24 @@
         [self.delegate performSelector:@selector(tabViewController:didRemoveViewController:) withObject:self withObject:controller];
     }
     
+    
 }
 
 @end
+
+@implementation UIViewController (QMBTabViewController)
+
+- (QMBTabViewController*)tabViewController
+{
+    UIViewController *parent = self;
+    
+    while ( nil != (parent = [parent parentViewController]) && ![parent isKindOfClass:[QMBTabViewController class]] )
+    {
+    }
+    
+    return (id)parent;
+}
+
+
+@end
+
