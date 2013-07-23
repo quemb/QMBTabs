@@ -63,12 +63,8 @@
     [super viewDidLoad];
     _viewControllers = [NSMutableArray array];
     
-    float width = self.view.bounds.size.width;
-    float height = self.view.bounds.size.height;
-    if ([[UIDevice currentDevice] orientation] == UIDeviceOrientationLandscapeLeft || [[UIDevice currentDevice] orientation] == UIDeviceOrientationLandscapeRight){
-        width = self.view.bounds.size.height;
-        height = self.view.bounds.size.width;
-    }
+    float width = self.view.frame.size.width;
+    float height = self.view.frame.size.height;
     
     [_tabBar setFrame:CGRectMake(0, 0,width, 44.0f)];
     [self.view addSubview:_tabBar];

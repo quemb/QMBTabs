@@ -166,8 +166,6 @@ static float highlightBarHeight = 5.0f;
 - (void)drawRect:(CGRect)rect{
     
     [super drawRect:rect];
-    
-    [self setBackgroundColor:[UIColor redColor]];
         
     self.normalColor = self.appearance.tabBackgroundColorEnabled;
     self.highlightColor = self.appearance.tabBackgroundColorHighlighted;
