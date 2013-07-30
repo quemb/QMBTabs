@@ -42,10 +42,7 @@
         
         // close button
         if (!self.closeButton){
-            UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            [closeButton addTarget:self action:@selector(closeButtonTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
-            [self addSubview:closeButton];
-            self.closeButton = closeButton;
+            
         }
         
         // icon image view
@@ -91,8 +88,6 @@
         self.highlightColor = self.appearance.tabBackgroundColorHighlighted;
     }
     
-    [self.closeButton setImage:self.appearance.tabCloseButtonImage forState:UIControlStateNormal];
-    [self.closeButton setImage:self.appearance.tabCloseButtonHighlightedImage forState:UIControlStateHighlighted];
 
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	CGMutablePathRef path;
@@ -109,6 +104,22 @@
     
     CGFloat qmbTabIconWidth = 0.0f;
     CGFloat qmbTabIconMargin = 3.0f;
+    
+    
+    if (!self.closeButton){
+        UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [closeButton setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin];
+        [closeButton addTarget:self action:@selector(closeButtonTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:closeButton];
+        self.closeButton = closeButton;
+        [self.closeButton setFrame:CGRectMake(qmbTabWidth - qmbTabSideOffset - qmbTabCurvature - (self.appearance.tabCloseButtonImage).size.width,
+                                              (qmbTabHeight - (self.appearance.tabCloseButtonImage).size.height) / 2 + qmbTabTopOffset,
+                                              (self.appearance.tabCloseButtonImage).size.width, (self.appearance.tabCloseButtonImage).size.height)];
+    }
+    
+    [self.closeButton setImage:self.appearance.tabCloseButtonImage forState:UIControlStateNormal];
+    [self.closeButton setImage:self.appearance.tabCloseButtonHighlightedImage forState:UIControlStateHighlighted];
+    
 
 	CGContextSaveGState(context);
     
@@ -162,9 +173,7 @@
     // highlighted tab
     if (_highlighted){
         // set frame of the close button
-        [self.closeButton setFrame:CGRectMake(qmbTabWidth - qmbTabSideOffset - qmbTabCurvature - (self.appearance.tabCloseButtonImage).size.width,
-                                              (qmbTabHeight - (self.appearance.tabCloseButtonImage).size.height) / 2 + qmbTabTopOffset,
-                                              (self.appearance.tabCloseButtonImage).size.width, (self.appearance.tabCloseButtonImage).size.height)];
+        
         
         // set font and color of the title label
         [self.titleLabel setFont:self.appearance.tabLabelFontHighlighted];
@@ -194,10 +203,7 @@
                                              qmbTabWidth - 2*qmbTabSideOffset - 2*qmbTabCurvature - (_closable ? self.closeButton.frame.size.width + qmbTabIconMargin : 0.0f) - qmbTabIconWidth, self.frame.size.height)];
         
     }else {
-        // set frame of the close button
-        [self.closeButton setFrame:CGRectMake(qmbTabWidth - qmbTabSideOffset - qmbTabCurvature - (self.appearance.tabCloseButtonImage).size.width,
-                                              (qmbTabHeight - (self.appearance.tabCloseButtonImage).size.height) / 2 + qmbTabTopOffset,
-                                              0, (self.appearance.tabCloseButtonImage).size.height)];
+        
         
         // set font and color of the title label
         [self.titleLabel setFont:self.appearance.tabLabelFontEnabled];
@@ -226,6 +232,8 @@
         [self.titleLabel setFrame:CGRectMake(qmbTabSideOffset + qmbTabCurvature + qmbTabIconWidth, 3.0f,
                                              qmbTabWidth - 2*qmbTabSideOffset - 2*qmbTabCurvature - qmbTabIconWidth, self.frame.size.height)];
     }
+    
+    // set frame of the close button
     
     [self.closeButton setHidden:!_highlighted || !_closable];
     
