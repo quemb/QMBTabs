@@ -5,7 +5,7 @@ QMBTabs
 <img style="position: relative; width: auto; margin: 0;" src="http://d.pr/i/eXIu+" alt="QMBTabs"/>
 </a>
 
-Version: 0.2 - beta - Feel free to use and test it!
+Version: 0.2 - Feel free to use and test it!
 
 Tab View Controller just like mobile Chrome
 
@@ -20,6 +20,7 @@ Tab View Controller just like mobile Chrome
 - Many delegation methods
 - works in iPhone, iPad (Landscape and portait)
 - Working Sample provided
+- App Store tested
 
 ## To Do:
 - Stacking or Scroll - Option (Stacking only at the moment)
