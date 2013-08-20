@@ -129,6 +129,9 @@
         [self.contentView addSubview:controller.view];
         self.selectedViewController = controller;
         [_tabBar selectTab:[_tabBar tabItemForIndex:[self indexForViewController:self.selectedViewController]]];
+        if ([self.delegate respondsToSelector:@selector(tabViewController:didSelectViewController:)]){
+            [self.delegate performSelector:@selector(tabViewController:didSelectViewController:) withObject:self withObject:self.selectedViewController];
+        }
     }else {
         [self transitionFromViewController:current
                           toViewController:controller
