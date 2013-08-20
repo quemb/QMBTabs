@@ -39,6 +39,12 @@
             self.titleLabel = titleLabel;
             [self addSubview:self.titleLabel];
         }
+
+        // badge
+        if (!_badge) {
+            _badge = [[QMBNumericBadgeView alloc] init];
+            [self insertSubview:_badge aboveSubview:self];
+        }
         
         // close button
         if (!self.closeButton){
@@ -242,6 +248,18 @@
 
 - (void)layoutSubviews{
     [super layoutSubviews];
+    // Position to the right upper corner
+    if (CGRectIsEmpty(self.frame) == NO && CGRectIsEmpty(self.badge.frame) == NO) {
+        // Badge on upper left corner of tab
+        self.badge.frame = CGRectMake(
+                self.appearance.tabTopOffset - self.badge.frame.size.width / 2,
+                - self.badge.frame.size.height / 4,
+                self.badge.frame.size.width,
+                self.badge.frame.size.height
+        );
+    } else {
+        self.badge.hidden = YES;
+    }
 }
 
 - (void) setHighlighted:(BOOL)highlighted
