@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4CC22D1B17C380B100103FE0 /* QMBBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC22D1817C380B100103FE0 /* QMBBadgeView.m */; };
+		4CC22D1C17C380B100103FE0 /* QMBNumericBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC22D1A17C380B100103FE0 /* QMBNumericBadgeView.m */; };
 		89144FD1178D7AFD009C4CA1 /* SampleTabItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89144FD0178D7AFD009C4CA1 /* SampleTabItemViewController.m */; };
 		896CE9A1178DA27F00DBE468 /* navigation-bar-background_44.png in Resources */ = {isa = PBXBuildFile; fileRef = 896CE99F178DA27F00DBE468 /* navigation-bar-background_44.png */; };
 		896CE9A2178DA27F00DBE468 /* navigation-bar-background_44@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 896CE9A0178DA27F00DBE468 /* navigation-bar-background_44@2x.png */; };
@@ -140,6 +142,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4CC22D1717C380B100103FE0 /* QMBBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMBBadgeView.h; sourceTree = "<group>"; };
+		4CC22D1817C380B100103FE0 /* QMBBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMBBadgeView.m; sourceTree = "<group>"; };
+		4CC22D1917C380B100103FE0 /* QMBNumericBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMBNumericBadgeView.h; sourceTree = "<group>"; };
+		4CC22D1A17C380B100103FE0 /* QMBNumericBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMBNumericBadgeView.m; sourceTree = "<group>"; };
 		89144FCF178D7AFD009C4CA1 /* SampleTabItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleTabItemViewController.h; sourceTree = "<group>"; };
 		89144FD0178D7AFD009C4CA1 /* SampleTabItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleTabItemViewController.m; sourceTree = "<group>"; };
 		896CE99F178DA27F00DBE468 /* navigation-bar-background_44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "navigation-bar-background_44.png"; path = "Resources/navigation-bar-background_44.png"; sourceTree = "<group>"; };
@@ -510,6 +516,10 @@
 				E24EDB9C177F192400673520 /* QMBTab.m */,
 				89851C0117846F9E007310F9 /* QMBTabsAppearance.h */,
 				89851C0217846F9E007310F9 /* QMBTabsAppearance.m */,
+				4CC22D1717C380B100103FE0 /* QMBBadgeView.h */,
+				4CC22D1817C380B100103FE0 /* QMBBadgeView.m */,
+				4CC22D1917C380B100103FE0 /* QMBNumericBadgeView.h */,
+				4CC22D1A17C380B100103FE0 /* QMBNumericBadgeView.m */,
 			);
 			name = QMBTabs;
 			path = ../QMBTabs;
@@ -733,6 +743,8 @@
 				E24EDBA21780CF7600673520 /* SampleTabViewController.m in Sources */,
 				89851C0317846F9E007310F9 /* QMBTabsAppearance.m in Sources */,
 				89144FD1178D7AFD009C4CA1 /* SampleTabItemViewController.m in Sources */,
+				4CC22D1B17C380B100103FE0 /* QMBBadgeView.m in Sources */,
+				4CC22D1C17C380B100103FE0 /* QMBNumericBadgeView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
