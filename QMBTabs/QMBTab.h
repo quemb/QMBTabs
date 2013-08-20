@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "QMBTabsAppearance.h"
+#import "QMBNumericBadgeView.h"
 
 @class QMBTab;
 
@@ -41,6 +42,8 @@
 @property (nonatomic) BOOL closable;
 @property (nonatomic, weak) UIImage *iconImage;
 @property (nonatomic, weak) UIImage *iconHighlightedImage;
+
+@property (nonatomic, readonly) QMBNumericBadgeView *badge;
 
 - (void) setHighlighted:(BOOL)highlighted;
 
