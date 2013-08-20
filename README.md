@@ -21,6 +21,7 @@ Tab View Controller just like mobile Chrome
 - works in iPhone, iPad (Landscape and portait)
 - Working Sample provided
 - App Store tested
+- Stacking tabs to left or right (optional via TabBar.stackedTabOffset)
 
 ## To Do:
 - Stacking or Scroll - Option (Stacking only at the moment)
