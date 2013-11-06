@@ -42,6 +42,7 @@
 @property(nonatomic,assign) UIViewController *selectedViewController;
 
 @property(nonatomic,strong, readonly) QMBTabBar *tabBar;
+//top offset to rearrange the tabBar below the statusbar, by default its set to the status bar height (set it to 0) for fullsize
 @property(nonatomic, assign) float tabBarTopOffset;
 
 @property(nonatomic,assign) id<QMBTabViewControllerDelegate> delegate;
