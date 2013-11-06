@@ -30,6 +30,8 @@
     
     _tabLabelAlignment = NSTextAlignmentCenter;
     
+    _tabBarBackgroundColor = [UIColor colorWithRed:.9 green:.9 blue:1 alpha:1];
+    
     _tabBackgroundColorEnabled = [UIColor colorWithWhite:0.8f alpha:1.0f];
     _tabBackgroundColorHighlighted = [UIColor colorWithWhite:0.6f alpha:1.0f];
     _tabBackgroundColorDisabled = [UIColor colorWithWhite:0.8f alpha:0.7f];

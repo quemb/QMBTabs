@@ -8,7 +8,6 @@
 
 #import "QMBTabViewController.h"
 
-
 @interface QMBTabViewController ()
 
 @property (nonatomic, strong) UIView *contentView;
@@ -48,7 +47,7 @@
     QMBTabBar *tabBar = [[QMBTabBar alloc] init];
     tabBar.tabBarDelegeate = self;
     tabBar.appearance = self.appearance;
-    [tabBar setBackgroundColor:self.appearance.tabBarBackgroundColor];
+    [tabBar setBackgroundColor:[UIColor clearColor]];
     [tabBar setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
     _tabBar = tabBar;
 }
@@ -66,10 +65,19 @@
     float width = self.view.frame.size.width;
     float height = self.view.frame.size.height;
     
-    [_tabBar setFrame:CGRectMake(0, 0,width, 44.0f)];
-    [self.view addSubview:_tabBar];
+    if (!_tabBarTopOffset){
+        _tabBarTopOffset = [UIApplication sharedApplication].statusBarFrame.size.height;
+    }
+
     
-    UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, _tabBar.frame.size.height, width, height-_tabBar.frame.size.height)];
+    [_tabBar setFrame:CGRectMake(0, _tabBarTopOffset,width, 44.0f)];
+    
+    UIView *tabBarContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0,width, _tabBar.frame.size.height + _tabBarTopOffset)];
+    [tabBarContainer setBackgroundColor:self.appearance.tabBarBackgroundColor];
+    [tabBarContainer addSubview:_tabBar];
+    [self.view addSubview:tabBarContainer];
+    
+    UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, _tabBar.frame.size.height+_tabBarTopOffset, width, height-_tabBar.frame.size.height)];
     [contentView setClipsToBounds:YES];
     [contentView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
     [self.view addSubview:contentView];

@@ -42,6 +42,7 @@
 @property(nonatomic,assign) UIViewController *selectedViewController;
 
 @property(nonatomic,strong, readonly) QMBTabBar *tabBar;
+@property(nonatomic, assign) float tabBarTopOffset;
 
 @property(nonatomic,assign) id<QMBTabViewControllerDelegate> delegate;
 

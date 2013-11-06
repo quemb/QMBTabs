@@ -252,7 +252,7 @@
     if (CGRectIsEmpty(self.frame) == NO && CGRectIsEmpty(self.badge.frame) == NO) {
         // Badge on upper left corner of tab
         self.badge.frame = CGRectMake(
-                self.appearance.tabTopOffset - self.badge.frame.size.width / 2,
+                self.frame.size.width - self.badge.frame.size.width,
                 - self.badge.frame.size.height / 4,
                 self.badge.frame.size.width,
                 self.badge.frame.size.height

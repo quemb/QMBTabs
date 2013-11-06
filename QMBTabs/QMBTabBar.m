@@ -39,7 +39,7 @@ static float highlightBarHeight = 5.0f;
         [self setShowsHorizontalScrollIndicator:NO];
         [self setShowsVerticalScrollIndicator:NO];
         [self setAlwaysBounceHorizontal:YES];
-        
+        [self setClipsToBounds:NO];
         
     }
     return self;
@@ -54,6 +54,7 @@ static float highlightBarHeight = 5.0f;
    
     QMBTab *tabItem = [[QMBTab alloc] initWithFrame:CGRectMake([_items count] * currentTabItemWidth, 0, 0, self.frame.size.height-highlightBarHeight)];
     [tabItem setAppearance:self.appearance];
+
     tabItem.titleLabel.text = NSLocalizedString(@"New tab", @"QMBTabBar New Tab Title");
     [tabItem setDelegate:self];
     
