@@ -69,7 +69,7 @@
     
     if (!_tabBarTopOffset){
         // set default offset to statusbar height
-        _tabBarTopOffset = 22.0f;
+        _tabBarTopOffset = 20.0f;
     }
 
     [_tabBar setFrame:CGRectMake(0, _tabBarTopOffset,width, 44.0f)];
