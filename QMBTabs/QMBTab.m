@@ -22,7 +22,7 @@
         _orgFrame = frame;
 		_closable = YES;
         
-        [self setClipsToBounds:NO];
+//        [self setClipsToBounds:NO];
         
 		[self setOpaque:NO];
         

@@ -16,6 +16,8 @@
 
 @implementation QMBTabViewController
 
+
+
 - (id) init
 {
     self = [super init];
@@ -23,7 +25,7 @@
     if (self){
 
         [self setup];
-        
+        _tabBarTopOffset = 0;
     }
     
     return self;
@@ -66,14 +68,15 @@
     float height = self.view.frame.size.height;
     
     if (!_tabBarTopOffset){
-        _tabBarTopOffset = [UIApplication sharedApplication].statusBarFrame.size.height;
+        // set default offset to statusbar height
+        _tabBarTopOffset = 22.0f;
     }
 
-    
     [_tabBar setFrame:CGRectMake(0, _tabBarTopOffset,width, 44.0f)];
     
-    UIView *tabBarContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0,width, _tabBar.frame.size.height + _tabBarTopOffset)];
+    UIView *tabBarContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0,width, _tabBar.frame.size.height + _tabBar.frame.origin.y)];
     [tabBarContainer setBackgroundColor:self.appearance.tabBarBackgroundColor];
+    [tabBarContainer setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
     [tabBarContainer addSubview:_tabBar];
     [self.view addSubview:tabBarContainer];
     
