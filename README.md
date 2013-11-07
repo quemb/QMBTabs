@@ -5,9 +5,12 @@ QMBTabs
 <img style="position: relative; width: auto; margin: 0;" src="http://d.pr/i/eXIu+" alt="QMBTabs"/>
 </a>
 
-Version: 0.2 - Feel free to use and test it!
+Version: 0.3 - App Store prooved 
 
 Tab View Controller just like mobile Chrome
+
+## New in v0.3:
+- iOS 7 adaptations (use topOffset property for setting up the top margin [default: height of the status bar])
 
 ## Features:
 - iOS 5 and above (uses ChildViewController API - released in iOS 5)
